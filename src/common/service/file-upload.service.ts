@@ -29,6 +29,7 @@ export class FileUploadService {
   async uploadImage(
     file: Express.Multer.File,
     productId: string,
+    productSlug?: string,
   ): Promise<{
     filename: string;
     original_name: string;
@@ -55,7 +56,21 @@ export class FileUploadService {
     // Generate unique filename
     const fileExtension = path.extname(file.originalname);
     const filename = `${uuidv4()}${fileExtension}`;
-    const filePath = path.join(this.uploadDir, filename);
+    
+    // Create product-specific directory path
+    let productDir = this.uploadDir;
+    if (productId) {
+      // Create a directory structure like: uploads/productId/slug/
+      const slugDir = productSlug ? productSlug : productId;
+      productDir = path.join(this.uploadDir, productId, slugDir);
+      
+      // Ensure the product directory exists
+      if (!fs.existsSync(productDir)) {
+        fs.mkdirSync(productDir, { recursive: true });
+      }
+    }
+    
+    const filePath = path.join(productDir, filename);
 
     // Process image with sharp
     const image = sharp(file.buffer);
@@ -92,7 +107,7 @@ export class FileUploadService {
   }
 
   getImageUrl(filename: string): string {
-    const appUrl = process.env.APP_URL || 'http://localhost:3000';
+    const appUrl = process.env.APP_URL || 'http://localhost:4000';
     return `${appUrl}/uploads/${filename}`;
   }
 }

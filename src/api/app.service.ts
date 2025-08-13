@@ -4,10 +4,12 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser';
 import { AllExceptionsFilter } from '../infrastructure/lib/index';
+import { IoAdapter } from '@nestjs/platform-socket.io';
 
 export class Application {
   static async main(): Promise<void> {
     const app = await NestFactory.create(AppModule);
+    app.useWebSocketAdapter(new IoAdapter(app));
     app.setGlobalPrefix('api');
     app.use(cookieParser());
     app.useGlobalFilters(new AllExceptionsFilter());

@@ -371,6 +371,60 @@ export class ProductController {
     return this.productService.removeFromFavorites(id);
   }
 
+  @Post(':id/share')
+  @ApiOperation({ summary: 'Add share to product' })
+  @ApiResponse({ status: 200, description: 'Share added successfully' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  addShare(@Param('id') id: string) {
+    return this.productService.addShare(id);
+  }
+
+  @Post(':id/comment')
+  @ApiOperation({ summary: 'Add comment to product' })
+  @ApiResponse({ status: 200, description: 'Comment added successfully' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  addComment(
+    @Param('id') id: string,
+    @Request() req: RequestWithUser,
+    @Body() body: { comment: string },
+  ) {
+    return this.productService.addComment(id, req.user.sub, body.comment);
+  }
+
+  @Post(':id/report')
+  @ApiOperation({ summary: 'Report a product' })
+  @ApiResponse({ status: 200, description: 'Product reported successfully' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  reportProduct(
+    @Param('id') id: string,
+    @Request() req: RequestWithUser,
+    @Body() body: { reason: string },
+  ) {
+    return this.productService.reportProduct(id, req.user.sub, body.reason);
+  }
+
+  @Get(':id/engagement/history')
+  @ApiOperation({ summary: 'Get engagement history for a product' })
+  @ApiResponse({
+    status: 200,
+    description: 'Engagement history retrieved successfully',
+  })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  getEngagementHistory(@Param('id') id: string) {
+    return this.productService.getEngagementHistory(id);
+  }
+
+  @Get(':id/engagement/analytics')
+  @ApiOperation({ summary: 'Get engagement analytics for a product' })
+  @ApiResponse({
+    status: 200,
+    description: 'Engagement analytics retrieved successfully',
+  })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  getEngagementAnalytics(@Param('id') id: string) {
+    return this.productService.getEngagementAnalytics(id);
+  }
+
   // Advertising system endpoints
   @Get('promotion/options')
   @ApiOperation({ summary: 'Get promotion options' })
@@ -401,5 +455,140 @@ export class ProductController {
   @ApiResponse({ status: 404, description: 'Product not found' })
   cancelPromotion(@Param('id') id: string) {
     return this.productService.cancelPromotion(id);
+  }
+
+  // Draft/Published logic endpoints
+  @Get('draft')
+  @ApiOperation({ summary: 'Get draft products for current user' })
+  @ApiResponse({
+    status: 200,
+    description: 'Draft products retrieved successfully',
+  })
+  findDraftProducts(
+    @Request() req: RequestWithUser,
+    @Query() paginationDto: PaginationDto,
+  ) {
+    return this.productService.findDraftProductsByUser(
+      req.user.sub,
+      paginationDto,
+    );
+  }
+
+  @Post(':id/publish')
+  @ApiOperation({ summary: 'Publish a product' })
+  @ApiResponse({ status: 200, description: 'Product published successfully' })
+  @ApiResponse({ status: 400, description: 'Product is not publishable' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  publishProduct(@Param('id') id: string) {
+    return this.productService.publishProduct(id);
+  }
+
+  @Post(':id/unpublish')
+  @ApiOperation({ summary: 'Unpublish a product (move to draft)' })
+  @ApiResponse({ status: 200, description: 'Product unpublished successfully' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  unpublishProduct(@Param('id') id: string) {
+    return this.productService.unpublishProduct(id);
+  }
+
+  @Get(':id/publishable')
+  @ApiOperation({ summary: 'Check if a product is publishable and get issues' })
+  @ApiResponse({
+    status: 200,
+    description: 'Product publishable status retrieved successfully',
+  })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  async checkProductPublishable(@Param('id') id: string) {
+    const product = await this.productService.findOne(id);
+    const issues = this.productService.checkProductPublishable(product);
+    return { publishable: issues.length === 0, issues };
+  }
+
+  @Post(':id/submit-for-review')
+  @ApiOperation({ summary: 'Submit a product for review' })
+  @ApiResponse({ status: 200, description: 'Product submitted for review successfully' })
+  @ApiResponse({ status: 400, description: 'Product is not publishable' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  submitForReview(@Param('id') id: string) {
+    return this.productService.submitForReview(id);
+  }
+
+  @Post(':id/approve')
+  @Roles('admin', 'moderator')
+  @ApiOperation({ summary: 'Approve a product (moderator)' })
+  @ApiResponse({ status: 200, description: 'Product approved successfully' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  approveProduct(
+    @Param('id') id: string,
+    @Request() req: RequestWithUser,
+  ) {
+    return this.productService.approveProduct(id, req.user.sub);
+  }
+
+  @Post(':id/reject')
+  @Roles('admin', 'moderator')
+  @ApiOperation({ summary: 'Reject a product (moderator)' })
+  @ApiResponse({ status: 200, description: 'Product rejected successfully' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  rejectProduct(
+    @Param('id') id: string,
+    @Request() req: RequestWithUser,
+    @Body() body: { reason: string },
+  ) {
+    return this.productService.rejectProduct(id, req.user.sub, body.reason);
+  }
+
+  @Get('pending-review')
+  @Roles('admin', 'moderator')
+  @ApiOperation({ summary: 'Get products pending review (moderator)' })
+  @ApiResponse({
+    status: 200,
+    description: 'Pending review products retrieved successfully',
+  })
+  getPendingReviewProducts(@Query() paginationDto: PaginationDto) {
+    return this.productService.getPendingReviewProducts(paginationDto);
+  }
+
+  // Enhanced promotion system endpoints
+  @Get('promotion/history')
+  @ApiOperation({ summary: 'Get promotion history for current user' })
+  @ApiResponse({
+    status: 200,
+    description: 'Promotion history retrieved successfully',
+  })
+  getPromotionHistory(@Request() req: RequestWithUser) {
+    return this.productService.getPromotionHistory(req.user.sub);
+  }
+
+  @Get('promotion/analytics/:id')
+  @ApiOperation({ summary: 'Get promotion analytics for a product' })
+  @ApiResponse({
+    status: 200,
+    description: 'Promotion analytics retrieved successfully',
+  })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  getPromotionAnalytics(@Param('id') id: string) {
+    return this.productService.getPromotionAnalytics(id);
+  }
+
+  @Post(':id/promotion/extend')
+  @ApiOperation({ summary: 'Extend promotion duration' })
+  @ApiResponse({ status: 200, description: 'Promotion extended successfully' })
+  @ApiResponse({ status: 400, description: 'Product is not promoted' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  extendPromotion(
+    @Param('id') id: string,
+    @Body() body: { days: number },
+  ) {
+    return this.productService.extendPromotion(id, body.days);
+  }
+
+  @Post(':id/promotion/reactivate')
+  @ApiOperation({ summary: 'Reactivate expired promotion' })
+  @ApiResponse({ status: 200, description: 'Promotion reactivated successfully' })
+  @ApiResponse({ status: 400, description: 'Product has no promotion history' })
+  @ApiResponse({ status: 404, description: 'Product not found' })
+  reactivatePromotion(@Param('id') id: string) {
+    return this.productService.reactivatePromotion(id);
   }
 }

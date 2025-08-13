@@ -14,6 +14,12 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { CreatePromotionDto } from './dto/promotion.dto';
 import { PaginationDto, PaginationResult } from 'src/common/dto/pagination.dto';
 import { FileUploadService } from 'src/common/service/file-upload.service';
+import {
+  IEngagementEvent,
+  IPromotionHistoryRecord,
+  IPromotionHistoryRecordGet,
+  IUserShare,
+} from 'src/common/interfaces';
 
 @Injectable()
 export class ProductService {
@@ -61,12 +67,37 @@ export class ProductService {
       10000000 + Math.random() * 90000000,
     ).toString();
 
+    // Generate slug from product name
+    const slug = this.generateSlug(createProductDto.name);
+
     const product = this.repository.create({
       ...createProductDto,
       created_by_id: userId,
       listing_id: listingId,
+      slug: slug,
+      tab: 'draft', // New products start in draft status
+      status: 500, // Default status
     });
-    return await this.repository.save(product);
+
+    // Save the product first
+    const savedProduct = await this.repository.save(product);
+
+    // Update publishable status
+    return await this.updateProductPublishableStatus(savedProduct);
+  }
+
+  /**
+   * Generate a URL-friendly slug from a string
+   * @param text The text to convert to a slug
+   * @returns The generated slug
+   */
+  private generateSlug(text: string): string {
+    return text
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/[\s_-]+/g, '-')
+      .replace(/^-+|-+$/g, '');
   }
 
   // Image handling methods
@@ -84,9 +115,11 @@ export class ProductService {
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
+
       const uploadResult = await this.fileUploadService.uploadImage(
         file,
         productId,
+        product.slug, // Pass the product slug for directory structure
       );
 
       const image = this.imageRepository.create({
@@ -98,6 +131,10 @@ export class ProductService {
 
       images.push(await this.imageRepository.save(image));
     }
+
+    // Update product publishable status
+    const updatedProduct = await this.findOne(productId);
+    await this.updateProductPublishableStatus(updatedProduct);
 
     return images;
   }
@@ -154,6 +191,10 @@ export class ProductService {
         await this.imageRepository.save(remainingImages[0]);
       }
     }
+
+    // Update product publishable status
+    const updatedProduct = await this.findOne(productId);
+    await this.updateProductPublishableStatus(updatedProduct);
   }
 
   async reorderImages(
@@ -177,6 +218,10 @@ export class ProductService {
       image.is_main = i === 0; // First in order is main
       images.push(await this.imageRepository.save(image));
     }
+
+    // Update product publishable status
+    const updatedProduct = await this.findOne(productId);
+    await this.updateProductPublishableStatus(updatedProduct);
 
     return images;
   }
@@ -221,8 +266,14 @@ export class ProductService {
   ): Promise<Product> {
     const product = await this.findOne(id);
 
+    // Update slug if name is being updated
+    if (updateProductDto.name && !updateProductDto.slug) {
+      updateProductDto.slug = this.generateSlug(updateProductDto.name);
+    }
+
     Object.assign(product, updateProductDto);
-    return await this.repository.save(product);
+    const updatedProduct = await this.repository.save(product);
+    return await this.updateProductPublishableStatus(updatedProduct);
   }
 
   async remove(id: string): Promise<void> {
@@ -461,6 +512,10 @@ export class ProductService {
   async addLike(id: string): Promise<Product> {
     const product = await this.findOne(id);
     product.likes_count += 1;
+
+    // Add to engagement history
+    await this.addToEngagementHistory(id, 'like', {});
+
     return await this.repository.save(product);
   }
 
@@ -475,13 +530,180 @@ export class ProductService {
   async addCall(id: string): Promise<Product> {
     const product = await this.findOne(id);
     product.calls_count += 1;
+
+    // Add to engagement history
+    await this.addToEngagementHistory(id, 'call', {});
+
     return await this.repository.save(product);
   }
 
   async addContact(id: string): Promise<Product> {
     const product = await this.findOne(id);
     product.contacts_count += 1;
+
+    // Add to engagement history
+    await this.addToEngagementHistory(id, 'contact', {});
+
     return await this.repository.save(product);
+  }
+
+  async addShare(id: string): Promise<Product> {
+    const product = await this.findOne(id);
+    product.shares_count += 1;
+
+    // Add to engagement history
+    await this.addToEngagementHistory(id, 'share', {});
+
+    // Update user's total shares
+    const user = (await this.repository.manager.findOne('User', {
+      where: { id: product.created_by_id },
+      select: {
+        id: true,
+        total_shares: true,
+        total_comments: true,
+        total_reports: true,
+      },
+    })) as IUserShare;
+    if (user) {
+      user.total_shares += 1;
+      await this.repository.manager.save('User', user);
+    }
+
+    return await this.repository.save(product);
+  }
+
+  async addComment(
+    id: string,
+    userId: string,
+    comment: string,
+  ): Promise<Product> {
+    const product = await this.findOne(id);
+    product.comments_count += 1;
+
+    // Add to engagement history
+    await this.addToEngagementHistory(id, 'comment', { userId, comment });
+
+    // Update user's total comments
+    const user = (await this.repository.manager.findOne('User', {
+      where: { id: userId },
+      select: {
+        id: true,
+        total_shares: true,
+        total_comments: true,
+        total_reports: true,
+      },
+    })) as IUserShare;
+    if (user) {
+      user.total_comments += 1;
+      await this.repository.manager.save('User', user);
+    }
+
+    return await this.repository.save(product);
+  }
+
+  async reportProduct(
+    id: string,
+    userId: string,
+    reason: string,
+  ): Promise<Product> {
+    const product = await this.findOne(id);
+    product.reports_count += 1;
+
+    // Add to engagement history
+    await this.addToEngagementHistory(id, 'report', { userId, reason });
+
+    // Update user's total reports
+    const user = (await this.repository.manager.findOne('User', {
+      where: { id: userId },
+      select: {
+        id: true,
+        total_shares: true,
+        total_comments: true,
+        total_reports: true,
+      },
+    })) as IUserShare;
+    if (user) {
+      user.total_reports += 1;
+      await this.repository.manager.save('User', user);
+    }
+
+    return await this.repository.save(product);
+  }
+
+  private async addToEngagementHistory(
+    productId: string,
+    type: string,
+    data: any,
+  ): Promise<void> {
+    const product = await this.repository.findOne({
+      where: { id: productId },
+    });
+
+    if (!product) {
+      return;
+    }
+
+    // Create engagement event
+    const engagementEvent: IEngagementEvent = {
+      type,
+      timestamp: new Date(),
+      data,
+    };
+
+    // Update engagement history
+    let history: IEngagementEvent[] = [];
+    if (product.engagement_history) {
+      try {
+        const parsed = JSON.parse(product.engagement_history);
+        history = Array.isArray(parsed) ? parsed : [];
+      } catch (e) {
+        // If parsing fails, start with empty array
+        console.error('Failed to parse engagement history:', e);
+        history = [];
+      }
+    }
+    history.push(engagementEvent);
+
+    product.engagement_history = JSON.stringify(history);
+    await this.repository.save(product);
+  }
+
+  async getEngagementHistory(productId: string): Promise<any[]> {
+    const product = await this.repository.findOne({
+      where: { id: productId },
+    });
+
+    if (!product || !product.engagement_history) {
+      return [];
+    }
+
+    try {
+      return JSON.parse(product.engagement_history);
+    } catch (e) {
+      return [];
+    }
+  }
+
+  async getEngagementAnalytics(productId: string): Promise<any> {
+    const product = await this.findOne(productId);
+
+    return {
+      product_id: product.id,
+      product_name: product.name,
+      views_count: product.views_count,
+      likes_count: product.likes_count,
+      calls_count: product.calls_count,
+      contacts_count: product.contacts_count,
+      shares_count: product.shares_count,
+      comments_count: product.comments_count,
+      reports_count: product.reports_count,
+      favorites_count: product.favorites_count,
+      promotion_views_count: product.promotion_views_count,
+      promotion_likes_count: product.promotion_likes_count,
+      promotion_calls_count: product.promotion_calls_count,
+      promotion_contacts_count: product.promotion_contacts_count,
+      promotion_favorites_count: product.promotion_favorites_count,
+    };
   }
 
   // Advertising system methods
@@ -554,6 +776,7 @@ export class ProductService {
       has_premium_badge: selectedOption.features.premium_badge,
       has_photo_gallery: selectedOption.features.photo_gallery,
       has_direct_contacts: selectedOption.features.direct_contacts,
+      last_promotion_at: new Date(),
     });
 
     return await this.repository.save(product);
@@ -566,6 +789,29 @@ export class ProductService {
       throw new BadRequestException('Product is not promoted');
     }
 
+    // Add to promotion history before cancelling
+    const promotionRecord: IPromotionHistoryRecord = {
+      type: product.promotion_type,
+      start_date: product.promotion_start_date,
+      end_date: product.promotion_end_date,
+      price: product.promotion_price,
+      duration_days: product.promotion_duration_days,
+      cancelled_at: new Date(),
+    };
+
+    // Update promotion history with proper typing
+    let history: IPromotionHistoryRecord[] = [];
+    if (product.promotion_history) {
+      try {
+        const parsed = JSON.parse(product.promotion_history);
+        history = Array.isArray(parsed) ? parsed : [];
+      } catch (e) {
+        console.error('Failed to parse promotion history:', e);
+        history = [];
+      }
+    }
+    history.push(promotionRecord);
+
     Object.assign(product, {
       is_promoted: false,
       promotion_type: null,
@@ -577,6 +823,10 @@ export class ProductService {
       has_premium_badge: false,
       has_photo_gallery: false,
       has_direct_contacts: false,
+      promotion_history: JSON.stringify(history),
+      total_promotion_spent:
+        product.total_promotion_spent + (product.promotion_price || 0),
+      last_promotion_at: new Date(),
     });
 
     return await this.repository.save(product);
@@ -726,5 +976,493 @@ export class ProductService {
   // Mahsulot ma'lumotlarini to'liq olish (listing ID bilan)
   async findOneWithDetails(id: string): Promise<Product> {
     return await this.findOne(id);
+  }
+
+  // Draft/Published logic methods
+  /**
+   * Check if a product is publishable based on validation rules
+   * @param product The product to check
+   * @returns Array of validation issues, empty if publishable
+   */
+  checkProductPublishable(product: Product): string[] {
+    const issues: string[] = [];
+
+    // Check if product has a name
+    if (!product.name || product.name.trim() === '') {
+      issues.push('Отсутствует заголовок');
+    }
+
+    // Check if product has a description
+    if (!product.description || product.description.trim() === '') {
+      issues.push('Отсутствует описание');
+    }
+
+    // Check if product has a price (unless it's free)
+    if (!product.is_free && (!product.price || product.price <= 0)) {
+      issues.push('Отсутствует цена');
+    }
+
+    // Check if product has at least one image
+    if (!product.images || product.images.length === 0) {
+      issues.push('Отсутствует изображение');
+    }
+
+    // Check if product has a category
+    if (!product.category || product.category.trim() === '') {
+      issues.push('Отсутствует категория');
+    }
+
+    // Check if product has a location
+    if (!product.location || product.location.trim() === '') {
+      issues.push('Отсутствует местоположение');
+    }
+
+    return issues;
+  }
+
+  /**
+   * Update product publishable status and issues
+   * @param product The product to update
+   * @returns Updated product
+   */
+  async updateProductPublishableStatus(product: Product): Promise<Product> {
+    // Load product images if not already loaded
+    if (!product.images) {
+      product.images = await this.imageRepository.find({
+        where: { product_id: product.id },
+        order: { order_index: 'ASC' },
+      });
+    }
+
+    // Check if product is publishable
+    const issues = this.checkProductPublishable(product);
+    const isPublishable = issues.length === 0;
+
+    // Update product fields
+    product.publishable = isPublishable;
+    product.issues = JSON.stringify(issues);
+
+    // If product is publishable and in draft status, we can publish it
+    if (isPublishable && product.tab === 'draft') {
+      product.tab = 'published';
+      product.first_published_at = new Date();
+    }
+
+    return await this.repository.save(product);
+  }
+
+  /**
+   * Publish a product
+   * @param productId The product ID to publish
+   * @returns Published product
+   */
+  async publishProduct(productId: string): Promise<Product> {
+    const product = await this.repository.findOne({
+      where: { id: productId },
+      relations: ['images'],
+    });
+
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+
+    // Check if product is publishable
+    const issues = this.checkProductPublishable(product);
+
+    if (issues.length > 0) {
+      throw new BadRequestException(
+        'Product is not publishable due to the following issues: ' +
+          issues.join(', '),
+      );
+    }
+
+    // Update product status to published
+    product.tab = 'published';
+    product.publishable = true;
+    product.issues = JSON.stringify([]);
+
+    // Set first published date if not already set
+    if (!product.first_published_at) {
+      product.first_published_at = new Date();
+    }
+
+    return await this.repository.save(product);
+  }
+
+  /**
+   * Unpublish a product (move to draft)
+   * @param productId The product ID to unpublish
+   * @returns Unpublished product
+   */
+  async unpublishProduct(productId: string): Promise<Product> {
+    const product = await this.repository.findOne({
+      where: { id: productId },
+    });
+
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+
+    // Update product status to draft
+    product.tab = 'draft';
+    product.publishable = false;
+
+    return await this.repository.save(product);
+  }
+
+  /**
+   * Get products by tab status (draft, published, etc.)
+   * @param tab The tab status to filter by
+   * @param paginationDto Pagination parameters
+   * @returns Paginated products
+   */
+  async findByTab(
+    tab: string,
+    paginationDto: PaginationDto,
+  ): Promise<PaginationResult<Product>> {
+    const queryBuilder = this.repository
+      .createQueryBuilder('product')
+      .leftJoinAndSelect('product.created_by', 'user')
+      .leftJoinAndSelect('product.images', 'images')
+      .where('product.tab = :tab', { tab })
+      .andWhere('product.is_active = :isActive', { isActive: true })
+      .orderBy('product.created_at', 'DESC')
+      .addOrderBy('images.order_index', 'ASC');
+
+    return await this.paginateQuery(queryBuilder, paginationDto);
+  }
+
+  /**
+   * Get draft products for a user
+   * @param userId The user ID to filter by
+   * @param paginationDto Pagination parameters
+   * @returns Paginated draft products
+   */
+  async findDraftProductsByUser(
+    userId: string,
+    paginationDto: PaginationDto,
+  ): Promise<PaginationResult<Product>> {
+    const queryBuilder = this.repository
+      .createQueryBuilder('product')
+      .leftJoinAndSelect('product.created_by', 'user')
+      .leftJoinAndSelect('product.images', 'images')
+      .where('product.created_by_id = :userId', { userId })
+      .andWhere('product.tab = :tab', { tab: 'draft' })
+      .andWhere('product.is_active = :isActive', { isActive: true })
+      .orderBy('product.created_at', 'DESC')
+      .addOrderBy('images.order_index', 'ASC');
+
+    return await this.paginateQuery(queryBuilder, paginationDto);
+  }
+
+  /**
+   * Submit a product for review
+   * @param productId The product ID to submit for review
+   * @returns Submitted product
+   */
+  async submitForReview(productId: string): Promise<Product> {
+    const product = await this.repository.findOne({
+      where: { id: productId },
+    });
+
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+
+    // Check if product is publishable
+    const issues = this.checkProductPublishable(product);
+
+    if (issues.length > 0) {
+      throw new BadRequestException(
+        'Product is not publishable due to the following issues: ' +
+          issues.join(', '),
+      );
+    }
+
+    // Update product status to pending review
+    product.tab = 'pending_review';
+    product.submitted_for_review_at = new Date();
+    product.publishable = true;
+    product.issues = JSON.stringify([]);
+
+    return await this.repository.save(product);
+  }
+
+  /**
+   * Approve a product (moderator action)
+   * @param productId The product ID to approve
+   * @param moderatorId The ID of the moderator approving the product
+   * @returns Approved product
+   */
+  async approveProduct(
+    productId: string,
+    moderatorId: string,
+  ): Promise<Product> {
+    const product = await this.repository.findOne({
+      where: { id: productId },
+    });
+
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+
+    // Update product status to published
+    product.tab = 'published';
+    product.last_reviewed_at = new Date();
+    product.reviewed_by_id = moderatorId;
+
+    // Set first published date if not already set
+    if (!product.first_published_at) {
+      product.first_published_at = new Date();
+    }
+
+    return await this.repository.save(product);
+  }
+
+  /**
+   * Reject a product (moderator action)
+   * @param productId The product ID to reject
+   * @param moderatorId The ID of the moderator rejecting the product
+   * @param reason The reason for rejection
+   * @returns Rejected product
+   */
+  async rejectProduct(
+    productId: string,
+    moderatorId: string,
+    reason: string,
+  ): Promise<Product> {
+    const product = await this.repository.findOne({
+      where: { id: productId },
+    });
+
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+
+    // Update product status to draft with rejection reason
+    product.tab = 'draft';
+    product.last_reviewed_at = new Date();
+    product.reviewed_by_id = moderatorId;
+    product.rejected_reason = reason;
+    product.status_reason = `Rejected: ${reason}`;
+
+    return await this.repository.save(product);
+  }
+
+  /**
+   * Get products pending review (moderator functionality)
+   * @param paginationDto Pagination parameters
+   * @returns Paginated products pending review
+   */
+  async getPendingReviewProducts(
+    paginationDto: PaginationDto,
+  ): Promise<PaginationResult<Product>> {
+    const queryBuilder = this.repository
+      .createQueryBuilder('product')
+      .leftJoinAndSelect('product.created_by', 'user')
+      .leftJoinAndSelect('product.images', 'images')
+      .where('product.tab = :tab', { tab: 'pending_review' })
+      .andWhere('product.is_active = :isActive', { isActive: true })
+      .orderBy('product.submitted_for_review_at', 'ASC')
+      .addOrderBy('images.order_index', 'ASC');
+
+    return await this.paginateQuery(queryBuilder, paginationDto);
+  }
+
+  /**
+   * Update product status with reason
+   * @param productId The product ID to update
+   * @param status The new status
+   * @param reason The reason for status change (optional)
+   * @returns Updated product
+   */
+  async updateProductStatus(
+    productId: string,
+    status: string,
+    reason?: string,
+  ): Promise<Product> {
+    const product = await this.repository.findOne({
+      where: { id: productId },
+    });
+
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+
+    product.tab = status;
+    if (reason) {
+      product.status_reason = reason;
+    }
+
+    return await this.repository.save(product);
+  }
+
+  /**
+   * Get promotion history for a user
+   * @param userId The user ID to get promotion history for
+   * @returns Array of promotion history records
+   */
+  async getPromotionHistory(
+    userId: string,
+  ): Promise<IPromotionHistoryRecordGet[]> {
+    const products = await this.repository.find({
+      where: { created_by_id: userId },
+    });
+
+    let allPromotionHistory: IPromotionHistoryRecordGet[] = [];
+
+    for (const product of products) {
+      // Add current promotion if active
+      if (product.is_promoted) {
+        const currentPromotion: IPromotionHistoryRecordGet = {
+          product_id: product.id,
+          product_name: product.name,
+          type: product.promotion_type,
+          start_date: product.promotion_start_date,
+          end_date: product.promotion_end_date,
+          price: product.promotion_price,
+          duration_days: product.promotion_duration_days,
+          status: 'active',
+        };
+        allPromotionHistory.push(currentPromotion);
+      }
+
+      // Add historical promotions
+      if (product.promotion_history) {
+        try {
+          const history: Array<{
+            type: string | null;
+            start_date: Date | null;
+            end_date: Date | null;
+            price: number | null;
+            duration_days: number | null;
+            cancelled_at?: Date;
+          }> = JSON.parse(product.promotion_history);
+
+          for (const record of history) {
+            allPromotionHistory.push({
+              product_id: product.id,
+              product_name: product.name,
+              ...record,
+              status: record.cancelled_at ? 'cancelled' : 'expired',
+            });
+          }
+        } catch (e) {
+          console.error(
+            `Failed to parse promotion history for product ${product.id}:`,
+            e,
+          );
+        }
+      }
+    }
+
+    // Sort by start date descending (with null checks)
+    allPromotionHistory.sort((a, b) => {
+      const aDate = a.start_date ? new Date(a.start_date).getTime() : 0;
+      const bDate = b.start_date ? new Date(b.start_date).getTime() : 0;
+      return bDate - aDate;
+    });
+
+    return allPromotionHistory;
+  }
+
+  /**
+   * Get promotion analytics for a product
+   * @param productId The product ID to get analytics for
+   * @returns Promotion analytics data
+   */
+  async getPromotionAnalytics(productId: string): Promise<any> {
+    const product = await this.findOne(productId);
+
+    return {
+      product_id: product.id,
+      product_name: product.name,
+      total_promotion_spent: product.total_promotion_spent,
+      last_promotion_at: product.last_promotion_at,
+      promotion_views_count: product.promotion_views_count,
+      promotion_likes_count: product.promotion_likes_count,
+      promotion_calls_count: product.promotion_calls_count,
+      promotion_contacts_count: product.promotion_contacts_count,
+      promotion_favorites_count: product.promotion_favorites_count,
+      current_promotion: product.is_promoted
+        ? {
+            type: product.promotion_type,
+            start_date: product.promotion_start_date,
+            end_date: product.promotion_end_date,
+            price: product.promotion_price,
+            duration_days: product.promotion_duration_days,
+          }
+        : null,
+    };
+  }
+
+  /**
+   * Extend promotion duration
+   * @param productId The product ID to extend promotion for
+   * @param days Number of days to extend
+   * @returns Updated product
+   */
+  async extendPromotion(productId: string, days: number): Promise<Product> {
+    const product = await this.findOne(productId);
+
+    if (!product.is_promoted) {
+      throw new BadRequestException('Product is not promoted');
+    }
+
+    // Extend end date
+    const newEndDate = new Date(product.promotion_end_date);
+    newEndDate.setDate(newEndDate.getDate() + days);
+
+    product.promotion_end_date = newEndDate;
+    product.promotion_duration_days += days;
+
+    return await this.repository.save(product);
+  }
+
+  /**
+   * Reactivate expired promotion
+   * @param productId The product ID to reactivate promotion for
+   * @returns Updated product
+   */
+  async reactivatePromotion(productId: string): Promise<Product> {
+    const product = await this.findOne(productId);
+
+    // Check if product has promotion history
+    if (!product.promotion_history) {
+      throw new BadRequestException('Product has no promotion history');
+    }
+
+    try {
+      const history = JSON.parse(product.promotion_history);
+      if (history.length === 0) {
+        throw new BadRequestException('Product has no promotion history');
+      }
+
+      // Get the last promotion record
+      const lastPromotion = history[history.length - 1];
+
+      // Reactivate with same settings
+      const startDate = new Date();
+      const endDate = new Date();
+      endDate.setDate(endDate.getDate() + lastPromotion.duration_days);
+
+      Object.assign(product, {
+        is_promoted: true,
+        promotion_type: lastPromotion.type,
+        promotion_start_date: startDate,
+        promotion_end_date: endDate,
+        promotion_price: lastPromotion.price,
+        promotion_duration_days: lastPromotion.duration_days,
+        has_large_photo: lastPromotion.features?.large_photo || false,
+        has_premium_badge: lastPromotion.features?.premium_badge || false,
+        has_photo_gallery: lastPromotion.features?.photo_gallery || false,
+        has_direct_contacts: lastPromotion.features?.direct_contacts || false,
+        last_promotion_at: new Date(),
+      });
+
+      return await this.repository.save(product);
+    } catch (e) {
+      throw new BadRequestException('Failed to reactivate promotion');
+    }
   }
 }

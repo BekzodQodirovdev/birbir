@@ -1,0 +1,3705 @@
+[
+  {
+    "children": [
+      {
+        "id": 1000009,
+        "key": "toshkent",
+        "title": "Toshkent",
+        "whereTitle": "Toshkentda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.279737, 41.311158]
+        },
+        "webUri": "uz/toshkent",
+        "webUriInfo": {
+          "uz": "uz/toshkent",
+          "ru": "ru/tashkent"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Toshkent"]
+      },
+      {
+        "id": 1000011,
+        "key": "oqqorgon",
+        "title": "Oqqo\u0027rg\u0027on",
+        "whereTitle": "Oqqo\u2018rg\u2018onda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.046812, 40.878579]
+        },
+        "webUri": "uz/oqqorgon",
+        "webUriInfo": {
+          "uz": "uz/oqqorgon",
+          "ru": "ru/akkurgan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Oqqo\u0027rg\u0027on"]
+      },
+      {
+        "id": 1000013,
+        "key": "olmaliq",
+        "title": "Olmaliq",
+        "whereTitle": "Olmaliqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.60711, 40.845891]
+        },
+        "webUri": "uz/olmaliq",
+        "webUriInfo": {
+          "uz": "uz/olmaliq",
+          "ru": "ru/almalyk"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Olmaliq"]
+      },
+      {
+        "id": 1000015,
+        "key": "angren",
+        "title": "Angren",
+        "whereTitle": "Angrenda",
+        "location": {
+          "type": "Point",
+          "coordinates": [70.085301, 41.012661]
+        },
+        "webUri": "uz/angren",
+        "webUriInfo": { "uz": "uz/angren", "ru": "ru/angren" },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Angren"]
+      },
+      {
+        "id": 1000017,
+        "key": "ohangaron",
+        "title": "Ohangaron",
+        "whereTitle": "Ohangaronda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.64368, 40.910447]
+        },
+        "webUri": "uz/ohangaron",
+        "webUriInfo": {
+          "uz": "uz/ohangaron",
+          "ru": "ru/akhangaran"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Ohangaron"]
+      },
+      {
+        "id": 1000019,
+        "key": "bekobod",
+        "title": "Bekobod",
+        "whereTitle": "Bekobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.265804, 40.217699]
+        },
+        "webUri": "uz/bekobod",
+        "webUriInfo": {
+          "uz": "uz/bekobod",
+          "ru": "ru/bekabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Bekobod"]
+      },
+      {
+        "id": 1000021,
+        "key": "boka",
+        "title": "Bo\u0027ka",
+        "whereTitle": "Bo\u02bbkada",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.201305, 40.814278]
+        },
+        "webUri": "uz/boka",
+        "webUriInfo": { "uz": "uz/boka", "ru": "ru/buka" },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Bo\u0027ka"]
+      },
+      {
+        "id": 1000023,
+        "key": "gazalkent",
+        "title": "G\u0027azalkent",
+        "whereTitle": "G\u2018azalkentda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.771043, 41.561828]
+        },
+        "webUri": "uz/gazalkent",
+        "webUriInfo": {
+          "uz": "uz/gazalkent",
+          "ru": "ru/gazalkent"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "G\u0027azalkent"]
+      },
+      {
+        "id": 1000025,
+        "key": "gulbahor",
+        "title": "Gulbahor",
+        "whereTitle": "Gulbahorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.027633, 41.076094]
+        },
+        "webUri": "uz/gulbahor",
+        "webUriInfo": {
+          "uz": "uz/gulbahor",
+          "ru": "ru/gulbakhor"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Gulbahor"]
+      },
+      {
+        "id": 1000027,
+        "key": "dostobod",
+        "title": "Do\u0027stobod",
+        "whereTitle": "Do\u2018stobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.929654, 40.8575]
+        },
+        "webUri": "uz/dostobod",
+        "webUriInfo": {
+          "uz": "uz/dostobod",
+          "ru": "ru/dustabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Do\u0027stobod"]
+      },
+      {
+        "id": 1000029,
+        "key": "zafar",
+        "title": "Zafar",
+        "whereTitle": "Zafarda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.250811, 40.378965]
+        },
+        "webUri": "uz/zafar",
+        "webUriInfo": { "uz": "uz/zafar", "ru": "ru/zafar" },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Zafar"]
+      },
+      {
+        "id": 1000031,
+        "key": "keles",
+        "title": "Keles",
+        "whereTitle": "Kelesda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.205356, 41.398196]
+        },
+        "webUri": "uz/keles",
+        "webUriInfo": { "uz": "uz/keles", "ru": "ru/keles" },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Keles"]
+      },
+      {
+        "id": 1000033,
+        "key": "qibray",
+        "title": "Qibray",
+        "whereTitle": "Qibrayda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.463065, 41.387318]
+        },
+        "webUri": "uz/qibray",
+        "webUriInfo": { "uz": "uz/qibray", "ru": "ru/kibray" },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Qibray"]
+      },
+      {
+        "id": 1000035,
+        "key": "qizil-tog",
+        "title": "Qizil-Tog\u02bb",
+        "whereTitle": "Qizil-Tog\u02bbda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.670306, 41.15687]
+        },
+        "webUri": "uz/qizil-tog",
+        "webUriInfo": {
+          "uz": "uz/qizil-tog",
+          "ru": "ru/kyzyltog"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Qizil-Tog\u02bb"]
+      },
+      {
+        "id": 1000037,
+        "key": "parkent",
+        "title": "Parkent",
+        "whereTitle": "Parkentda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.673504, 41.295008]
+        },
+        "webUri": "uz/parkent",
+        "webUriInfo": {
+          "uz": "uz/parkent",
+          "ru": "ru/parkent"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Parkent"]
+      },
+      {
+        "id": 1000039,
+        "key": "pskent",
+        "title": "Pskent",
+        "whereTitle": "Pskentda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.351162, 40.898111]
+        },
+        "webUri": "uz/pskent",
+        "webUriInfo": { "uz": "uz/pskent", "ru": "ru/pskent" },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Pskent"]
+      },
+      {
+        "id": 1000041,
+        "key": "nurafshon",
+        "title": "Nurafshon",
+        "whereTitle": "Nurafshonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.357612, 41.042709]
+        },
+        "webUri": "uz/nurafshon",
+        "webUriInfo": {
+          "uz": "uz/nurafshon",
+          "ru": "ru/nurafshan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Nurafshon"]
+      },
+      {
+        "id": 1000043,
+        "key": "chinoz",
+        "title": "Chinoz",
+        "whereTitle": "Chinozda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.763304, 40.934813]
+        },
+        "webUri": "uz/chinoz",
+        "webUriInfo": { "uz": "uz/chinoz", "ru": "ru/chinaz" },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Chinoz"]
+      },
+      {
+        "id": 1000045,
+        "key": "chirchiq",
+        "title": "Chirchiq",
+        "whereTitle": "Chirchiqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.581229, 41.472659]
+        },
+        "webUri": "uz/chirchiq",
+        "webUriInfo": {
+          "uz": "uz/chirchiq",
+          "ru": "ru/chirchik"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Chirchiq"]
+      },
+      {
+        "id": 1000047,
+        "key": "eshonguzar",
+        "title": "Eshonguzar",
+        "whereTitle": "Eshonguzarda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.153892, 41.251472]
+        },
+        "webUri": "uz/eshonguzar",
+        "webUriInfo": {
+          "uz": "uz/eshonguzar",
+          "ru": "ru/eshanguzar"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Eshonguzar"]
+      },
+      {
+        "id": 1000049,
+        "key": "yangibozor",
+        "title": "Yangibozor",
+        "whereTitle": "Yangibozorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.52557, 41.314056]
+        },
+        "webUri": "uz/yangibozor",
+        "webUriInfo": {
+          "uz": "uz/yangibozor",
+          "ru": "ru/yangibazar"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Yangibozor"]
+      },
+      {
+        "id": 1000051,
+        "key": "yangiyol",
+        "title": "Yangiyo\u0027l",
+        "whereTitle": "Yangiyo\u2018lda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.058544, 41.118933]
+        },
+        "webUri": "uz/yangiyol",
+        "webUriInfo": {
+          "uz": "uz/yangiyol",
+          "ru": "ru/yangiyul"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Yangiyo\u0027l"]
+      },
+      {
+        "id": 1000053,
+        "key": "chimgan",
+        "title": "Chimgan",
+        "whereTitle": "Chimganda",
+        "location": {
+          "type": "Point",
+          "coordinates": [70.058324, 41.495208]
+        },
+        "webUri": "uz/chimgan",
+        "webUriInfo": {
+          "uz": "uz/chimgan",
+          "ru": "ru/chimgan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Chimgan"]
+      },
+      {
+        "id": 1000055,
+        "key": "iskandar",
+        "title": "Iskandar",
+        "whereTitle": "Iskandarda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.714036, 41.563575]
+        },
+        "webUri": "uz/iskandar",
+        "webUriInfo": {
+          "uz": "uz/iskandar",
+          "ru": "ru/iskandar"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Iskandar"]
+      },
+      {
+        "id": 1000057,
+        "key": "xojakent",
+        "title": "Xo\u0027jakent",
+        "whereTitle": "Xo\u2018jakentda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.917289, 41.61758]
+        },
+        "webUri": "uz/xojakent",
+        "webUriInfo": {
+          "uz": "uz/xojakent",
+          "ru": "ru/khodzhikent"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Xo\u0027jakent"]
+      },
+      {
+        "id": 1000059,
+        "key": "chorvoq",
+        "title": "Chorvoq",
+        "whereTitle": "Chorvoqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.937986, 41.634384]
+        },
+        "webUri": "uz/chorvoq",
+        "webUriInfo": {
+          "uz": "uz/chorvoq",
+          "ru": "ru/charvak"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Chorvoq"]
+      },
+      {
+        "id": 1000061,
+        "key": "durmen",
+        "title": "Durmen",
+        "whereTitle": "Durmenda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.411879, 41.364942]
+        },
+        "webUri": "uz/durmen",
+        "webUriInfo": { "uz": "uz/durmen", "ru": "ru/durmen" },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Durmen"]
+      },
+      {
+        "id": 1000063,
+        "key": "zangiota",
+        "title": "Zangiota",
+        "whereTitle": "Zangiotada",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.159695, 41.204208]
+        },
+        "webUri": "uz/zangiota",
+        "webUriInfo": {
+          "uz": "uz/zangiota",
+          "ru": "ru/zangiata"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Zangiota"]
+      },
+      {
+        "id": 1000065,
+        "key": "koksaroy",
+        "title": "Ko\u0027ksaroy",
+        "whereTitle": "Ko\u2018ksaroyda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.153716, 42.64819]
+        },
+        "webUri": "uz/koksaroy",
+        "webUriInfo": {
+          "uz": "uz/koksaroy",
+          "ru": "ru/koksaray"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Ko\u0027ksaroy"]
+      },
+      {
+        "id": 1000067,
+        "key": "nazarbek",
+        "title": "Nazarbek",
+        "whereTitle": "Nazarbekda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.137273, 41.3071]
+        },
+        "webUri": "uz/nazarbek",
+        "webUriInfo": {
+          "uz": "uz/nazarbek",
+          "ru": "ru/nazarbek"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Nazarbek"]
+      },
+      {
+        "id": 1000069,
+        "key": "turkiston",
+        "title": "Turkiston",
+        "whereTitle": "Turkistonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.413738, 41.523804]
+        },
+        "webUri": "uz/turkiston",
+        "webUriInfo": {
+          "uz": "uz/turkiston",
+          "ru": "ru/turkestan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Turkiston"]
+      },
+      {
+        "id": 1000071,
+        "key": "ortaovul",
+        "title": "O\u02bbrtaovul",
+        "whereTitle": "O\u02bbrtaovulda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.139375, 41.184042]
+        },
+        "webUri": "uz/ortaovul",
+        "webUriInfo": {
+          "uz": "uz/ortaovul",
+          "ru": "ru/urtaaul"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "O\u02bbrtaovul"]
+      },
+      {
+        "id": 1000075,
+        "key": "salar",
+        "title": "Salar",
+        "whereTitle": "Salarda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.365876, 41.375559]
+        },
+        "webUri": "uz/salar",
+        "webUriInfo": { "uz": "uz/salar", "ru": "ru/salar" },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Salar"]
+      },
+      {
+        "id": 1000077,
+        "key": "soqoqsoy",
+        "title": "So\u02bbqoqsoy",
+        "whereTitle": "So\u02bbqoqsoyda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.781536, 41.249316]
+        },
+        "webUri": "uz/soqoqsoy",
+        "webUriInfo": { "uz": "uz/soqoqsoy", "ru": "ru/cukok" },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "So\u02bbqoqsoy"]
+      },
+      {
+        "id": 1000079,
+        "key": "tashmore",
+        "title": "Tashmore",
+        "whereTitle": "Tashmoreda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.331075, 40.959865]
+        },
+        "webUri": "uz/tashmore",
+        "webUriInfo": {
+          "uz": "uz/tashmore",
+          "ru": "ru/tashmore"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Tashmore"]
+      },
+      {
+        "id": 1000083,
+        "key": "yangiobod",
+        "title": "Yangiobod",
+        "whereTitle": "Yangiobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [70.097365, 41.121386]
+        },
+        "webUri": "uz/yangiobod",
+        "webUriInfo": {
+          "uz": "uz/yangiobod",
+          "ru": "ru/yangiabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Toshkent viloyati", "Yangiobod"]
+      }
+    ],
+    "id": 1000007,
+    "key": "toshkent-viloyati",
+    "title": "Toshkent viloyati",
+    "whereTitle": "Toshkent viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [69.385657, 41.288608]
+    },
+    "webUri": "uz/toshkent-viloyati",
+    "webUriInfo": {
+      "uz": "uz/toshkent-viloyati",
+      "ru": "ru/tashkentskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Toshkent viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000087,
+        "key": "andijon",
+        "title": "Andijon",
+        "whereTitle": "Andijonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.350672, 40.783388]
+        },
+        "webUri": "uz/andijon",
+        "webUriInfo": {
+          "uz": "uz/andijon",
+          "ru": "ru/andizhan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Andijon"]
+      },
+      {
+        "id": 1000089,
+        "key": "asaka",
+        "title": "Asaka",
+        "whereTitle": "Asakada",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.246827, 40.642406]
+        },
+        "webUri": "uz/asaka",
+        "webUriInfo": { "uz": "uz/asaka", "ru": "ru/asaka" },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Asaka"]
+      },
+      {
+        "id": 1000091,
+        "key": "jalaquduq",
+        "title": "Jalaquduq",
+        "whereTitle": "Jalaquduqda (Oxunboboyevda)",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.642337, 40.718892]
+        },
+        "webUri": "uz/jalaquduq",
+        "webUriInfo": {
+          "uz": "uz/jalaquduq",
+          "ru": "ru/djalakuduk"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Jalaquduq"]
+      },
+      {
+        "id": 1000093,
+        "key": "qorgontepa",
+        "title": "Qo\u0027rg\u0027ontepa",
+        "whereTitle": "Qo\u2018rg\u2018ontepada",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.759496, 40.730175]
+        },
+        "webUri": "uz/qorgontepa",
+        "webUriInfo": {
+          "uz": "uz/qorgontepa",
+          "ru": "ru/kurgantepa"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Qo\u0027rg\u0027ontepa"]
+      },
+      {
+        "id": 1000095,
+        "key": "paxtaobod",
+        "title": "Paxtaobod",
+        "whereTitle": "Paxtaobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.496837, 40.93251]
+        },
+        "webUri": "uz/paxtaobod",
+        "webUriInfo": {
+          "uz": "uz/paxtaobod",
+          "ru": "ru/pakhtaabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Paxtaobod"]
+      },
+      {
+        "id": 1000097,
+        "key": "poytug",
+        "title": "Poytug\u0027",
+        "whereTitle": "Poytug\u2018da",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.248938, 40.896257]
+        },
+        "webUri": "uz/poytug",
+        "webUriInfo": { "uz": "uz/poytug", "ru": "ru/paytug" },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Poytug\u0027"]
+      },
+      {
+        "id": 1000099,
+        "key": "xonobod",
+        "title": "Xonobod",
+        "whereTitle": "Xonobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.987344, 40.800764]
+        },
+        "webUri": "uz/xonobod",
+        "webUriInfo": {
+          "uz": "uz/xonobod",
+          "ru": "ru/khanabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Xonobod"]
+      },
+      {
+        "id": 1000101,
+        "key": "xojaobod",
+        "title": "Xo\u0027jaobod",
+        "whereTitle": "Xo\u2018jaobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.560662, 40.670298]
+        },
+        "webUri": "uz/xojaobod",
+        "webUriInfo": {
+          "uz": "uz/xojaobod",
+          "ru": "ru/khodzhaabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Xo\u0027jaobod"]
+      },
+      {
+        "id": 1000103,
+        "key": "shahrixon",
+        "title": "Shahrixon",
+        "whereTitle": "Shahrixonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.050949, 40.711605]
+        },
+        "webUri": "uz/shahrixon",
+        "webUriInfo": {
+          "uz": "uz/shahrixon",
+          "ru": "ru/shakhrikhan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Shahrixon"]
+      },
+      {
+        "id": 1000105,
+        "key": "kuyganyor",
+        "title": "Kuyganyor",
+        "whereTitle": "Kuyganyorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.314057, 40.857623]
+        },
+        "webUri": "uz/kuyganyor",
+        "webUriInfo": {
+          "uz": "uz/kuyganyor",
+          "ru": "ru/kuyganyar"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Kuyganyor"]
+      },
+      {
+        "id": 1000107,
+        "key": "oltinkol",
+        "title": "Oltinko\u02bbl",
+        "whereTitle": "Oltinko\u2018lda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.158514, 40.801637]
+        },
+        "webUri": "uz/oltinkol",
+        "webUriInfo": {
+          "uz": "uz/oltinkol",
+          "ru": "ru/altynkul"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Oltinko\u02bbl"]
+      },
+      {
+        "id": 1000109,
+        "key": "baliqchi",
+        "title": "Baliqchi",
+        "whereTitle": "Baliqchida",
+        "location": {
+          "type": "Point",
+          "coordinates": [76.196306, 42.456909]
+        },
+        "webUri": "uz/baliqchi",
+        "webUriInfo": {
+          "uz": "uz/baliqchi",
+          "ru": "ru/balykchi"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Baliqchi"]
+      },
+      {
+        "id": 1000111,
+        "key": "buloqboshi",
+        "title": "Buloqboshi",
+        "whereTitle": "Buloqboshida",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.500556, 40.626201]
+        },
+        "webUri": "uz/buloqboshi",
+        "webUriInfo": {
+          "uz": "uz/buloqboshi",
+          "ru": "ru/bulakbashi"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Buloqboshi"]
+      },
+      {
+        "id": 1000113,
+        "key": "boz",
+        "title": "Bo\u02bbz",
+        "whereTitle": "Bo\u2018zda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.10015, 40.240696]
+        },
+        "webUri": "uz/boz",
+        "webUriInfo": { "uz": "uz/boz", "ru": "ru/boz" },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Bo\u02bbz"]
+      },
+      {
+        "id": 1000116,
+        "key": "marhamat",
+        "title": "Marhamat",
+        "whereTitle": "Marhamatda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.333389, 40.503675]
+        },
+        "webUri": "uz/marhamat",
+        "webUriInfo": {
+          "uz": "uz/marhamat",
+          "ru": "ru/markhamat"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Marhamat"]
+      },
+      {
+        "id": 1000118,
+        "key": "oqoltin",
+        "title": "Oqoltin",
+        "whereTitle": "Oqoltinda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.707038, 40.744996]
+        },
+        "webUri": "uz/oqoltin",
+        "webUriInfo": {
+          "uz": "uz/oqoltin",
+          "ru": "ru/akaltyn"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Oqoltin"]
+      },
+      {
+        "id": 1000073,
+        "key": "qorasuv",
+        "title": "Qorasuv",
+        "whereTitle": "Qorasuvda",
+        "location": {
+          "type": "Point",
+          "coordinates": [30.692783, 41.110081]
+        },
+        "webUri": "uz/qorasuv",
+        "webUriInfo": { "uz": "uz/qorasuv", "ru": "ru/karasu" },
+        "isWholeCountry": false,
+        "titlePath": ["Andijon viloyati", "Qorasuv"]
+      }
+    ],
+    "id": 1000085,
+    "key": "andijon-viloyati",
+    "title": "Andijon viloyati",
+    "whereTitle": "Andijon viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [72.319206, 40.760797]
+    },
+    "webUri": "uz/andijon-viloyati",
+    "webUriInfo": {
+      "uz": "uz/andijon-viloyati",
+      "ru": "ru/andizhanskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Andijon viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000122,
+        "key": "buxoro",
+        "title": "Buxoro",
+        "whereTitle": "Buxoroda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.421728, 39.767966]
+        },
+        "webUri": "uz/buxoro",
+        "webUriInfo": { "uz": "uz/buxoro", "ru": "ru/bukhara" },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Buxoro"]
+      },
+      {
+        "id": 1000124,
+        "key": "olot",
+        "title": "Olot",
+        "whereTitle": "Olotda",
+        "location": {
+          "type": "Point",
+          "coordinates": [63.802448, 39.413378]
+        },
+        "webUri": "uz/olot",
+        "webUriInfo": { "uz": "uz/olot", "ru": "ru/alat" },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Olot"]
+      },
+      {
+        "id": 1000126,
+        "key": "vobkent",
+        "title": "Vobkent",
+        "whereTitle": "Vobkentda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.516878, 40.022882]
+        },
+        "webUri": "uz/vobkent",
+        "webUriInfo": {
+          "uz": "uz/vobkent",
+          "ru": "ru/vabkent"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Vobkent"]
+      },
+      {
+        "id": 1000128,
+        "key": "gazli",
+        "title": "Gazli",
+        "whereTitle": "Gazlida",
+        "location": {
+          "type": "Point",
+          "coordinates": [63.45815, 40.132894]
+        },
+        "webUri": "uz/gazli",
+        "webUriInfo": { "uz": "uz/gazli", "ru": "ru/gazli" },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Gazli"]
+      },
+      {
+        "id": 1000130,
+        "key": "galaosiyo",
+        "title": "Galaosiyo",
+        "whereTitle": "Galaosiyoda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.44733, 39.858352]
+        },
+        "webUri": "uz/galaosiyo",
+        "webUriInfo": {
+          "uz": "uz/galaosiyo",
+          "ru": "ru/galaasiya"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Galaosiyo"]
+      },
+      {
+        "id": 1000132,
+        "key": "gijduvon",
+        "title": "G\u0027ijduvon",
+        "whereTitle": "G\u02bbijduvonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.678476, 40.102797]
+        },
+        "webUri": "uz/gijduvon",
+        "webUriInfo": {
+          "uz": "uz/gijduvon",
+          "ru": "ru/gizhduvan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "G\u0027ijduvon"]
+      },
+      {
+        "id": 1000134,
+        "key": "kogon",
+        "title": "Kogon",
+        "whereTitle": "Kogonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.547178, 39.723543]
+        },
+        "webUri": "uz/kogon",
+        "webUriInfo": { "uz": "uz/kogon", "ru": "ru/kagan" },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Kogon"]
+      },
+      {
+        "id": 1000136,
+        "key": "qorakol",
+        "title": "Qorako\u0027l",
+        "whereTitle": "Qorako\u2018lda",
+        "location": {
+          "type": "Point",
+          "coordinates": [63.840141, 39.517043]
+        },
+        "webUri": "uz/qorakol",
+        "webUriInfo": {
+          "uz": "uz/qorakol",
+          "ru": "ru/karakul"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Qorako\u0027l"]
+      },
+      {
+        "id": 1000138,
+        "key": "romitan",
+        "title": "Romitan",
+        "whereTitle": "Romitanda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.382661, 39.93315]
+        },
+        "webUri": "uz/romitan",
+        "webUriInfo": {
+          "uz": "uz/romitan",
+          "ru": "ru/romitan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Romitan"]
+      },
+      {
+        "id": 1000140,
+        "key": "shofirkon",
+        "title": "Shofirkon",
+        "whereTitle": "Shofirkonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.502586, 40.118268]
+        },
+        "webUri": "uz/shofirkon",
+        "webUriInfo": {
+          "uz": "uz/shofirkon",
+          "ru": "ru/shafirkan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Shofirkon"]
+      },
+      {
+        "id": 1000142,
+        "key": "jondor",
+        "title": "Jondor",
+        "whereTitle": "Jondorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.180989, 39.738366]
+        },
+        "webUri": "uz/jondor",
+        "webUriInfo": { "uz": "uz/jondor", "ru": "ru/zhondor" },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Jondor"]
+      },
+      {
+        "id": 1000144,
+        "key": "qorovulbozor",
+        "title": "Qorovulbozor",
+        "whereTitle": "Qorovulbozorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.791071, 39.499938]
+        },
+        "webUri": "uz/qorovulbozor",
+        "webUriInfo": {
+          "uz": "uz/qorovulbozor",
+          "ru": "ru/karaulbazar"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Buxoro viloyati", "Qorovulbozor"]
+      }
+    ],
+    "id": 1000120,
+    "key": "buxoro-viloyati",
+    "title": "Buxoro viloyati",
+    "whereTitle": "Buxoro viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [63.659825, 40.210876]
+    },
+    "webUri": "uz/buxoro-viloyati",
+    "webUriInfo": {
+      "uz": "uz/buxoro-viloyati",
+      "ru": "ru/bukharskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Buxoro viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000148,
+        "key": "jizzax",
+        "title": "Jizzax",
+        "whereTitle": "Jizzaxda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.828544, 40.120302]
+        },
+        "webUri": "uz/jizzax",
+        "webUriInfo": { "uz": "uz/jizzax", "ru": "ru/dzhizak" },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Jizzax"]
+      },
+      {
+        "id": 1000150,
+        "key": "gagarin",
+        "title": "Gagarin",
+        "whereTitle": "Gagarinda",
+        "location": {
+          "type": "Point",
+          "coordinates": [34.996854, 55.553299]
+        },
+        "webUri": "uz/gagarin",
+        "webUriInfo": {
+          "uz": "uz/gagarin",
+          "ru": "ru/gagarin"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Gagarin"]
+      },
+      {
+        "id": 1000152,
+        "key": "gallaorol",
+        "title": "G\u0027allaorol",
+        "whereTitle": "G\u02bballaorolda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.58945, 40.02783]
+        },
+        "webUri": "uz/gallaorol",
+        "webUriInfo": {
+          "uz": "uz/gallaorol",
+          "ru": "ru/gallaaral"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "G\u0027allaorol"]
+      },
+      {
+        "id": 1000154,
+        "key": "dashtobod",
+        "title": "Dashtobod",
+        "whereTitle": "Dashtobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.920855, 38.774066]
+        },
+        "webUri": "uz/dashtobod",
+        "webUriInfo": {
+          "uz": "uz/dashtobod",
+          "ru": "ru/dashtabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Dashtobod"]
+      },
+      {
+        "id": 1000156,
+        "key": "dostlik",
+        "title": "Do\u0027stlik",
+        "whereTitle": "Do\u2018stlikda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.032605, 40.524983]
+        },
+        "webUri": "uz/dostlik",
+        "webUriInfo": {
+          "uz": "uz/dostlik",
+          "ru": "ru/dustlik"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Do\u0027stlik"]
+      },
+      {
+        "id": 1000158,
+        "key": "marjonbuloq",
+        "title": "Marjonbuloq",
+        "whereTitle": "Marjonbuloqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.424123, 39.936145]
+        },
+        "webUri": "uz/marjonbuloq",
+        "webUriInfo": {
+          "uz": "uz/marjonbuloq",
+          "ru": "ru/mardzhanbulak"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Marjonbuloq"]
+      },
+      {
+        "id": 1000160,
+        "key": "paxtakor",
+        "title": "Paxtakor",
+        "whereTitle": "Paxtakorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.956096, 40.310781]
+        },
+        "webUri": "uz/paxtakor",
+        "webUriInfo": {
+          "uz": "uz/paxtakor",
+          "ru": "ru/pakhtakor"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Paxtakor"]
+      },
+      {
+        "id": 1000162,
+        "key": "goliblar",
+        "title": "G\u02bboliblar",
+        "whereTitle": "G\u02bboliblarda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.876002, 40.496262]
+        },
+        "webUri": "uz/goliblar",
+        "webUriInfo": {
+          "uz": "uz/goliblar",
+          "ru": "ru/goliblar"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "G\u02bboliblar"]
+      },
+      {
+        "id": 1000164,
+        "key": "aydarkol",
+        "title": "Aydarko\u0027l",
+        "whereTitle": "Aydarko\u2018lda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.775458, 40.918747]
+        },
+        "webUri": "uz/aydarkol",
+        "webUriInfo": {
+          "uz": "uz/aydarkol",
+          "ru": "ru/aydarkul"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Aydarko\u0027l"]
+      },
+      {
+        "id": 1000166,
+        "key": "osmat",
+        "title": "O\u02bbsmat",
+        "whereTitle": "O\u02bbsmatda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.644875, 39.739586]
+        },
+        "webUri": "uz/osmat",
+        "webUriInfo": { "uz": "uz/osmat", "ru": "ru/usmat" },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "O\u02bbsmat"]
+      },
+      {
+        "id": 1000168,
+        "key": "uchtepa",
+        "title": "Uchtepa",
+        "whereTitle": "Uchtepada",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.906859, 40.209077]
+        },
+        "webUri": "uz/uchtepa",
+        "webUriInfo": {
+          "uz": "uz/uchtepa",
+          "ru": "ru/uchtepa"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Uchtepa"]
+      },
+      {
+        "id": 1000170,
+        "key": "zomin",
+        "title": "Zomin",
+        "whereTitle": "Zominda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.396585, 39.961878]
+        },
+        "webUri": "uz/zomin",
+        "webUriInfo": { "uz": "uz/zomin", "ru": "ru/zaamin" },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Zomin"]
+      },
+      {
+        "id": 1000172,
+        "key": "zarbdor",
+        "title": "Zarbdor",
+        "whereTitle": "Zarbdorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.165278, 40.087902]
+        },
+        "webUri": "uz/zarbdor",
+        "webUriInfo": {
+          "uz": "uz/zarbdor",
+          "ru": "ru/zarbdar"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Zarbdor"]
+      },
+      {
+        "id": 1000174,
+        "key": "zafarobod",
+        "title": "Zafarobod",
+        "whereTitle": "Zafarobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.846623, 40.177394]
+        },
+        "webUri": "uz/zafarobod",
+        "webUriInfo": {
+          "uz": "uz/zafarobod",
+          "ru": "ru/zafarabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Zafarobod"]
+      },
+      {
+        "id": 1000176,
+        "key": "yangiqishloq",
+        "title": "Yangiqishloq",
+        "whereTitle": "Yangiqishloqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.260059, 40.353871]
+        },
+        "webUri": "uz/yangiqishloq",
+        "webUriInfo": {
+          "uz": "uz/yangiqishloq",
+          "ru": "ru/yangikishlak"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Yangiqishloq"]
+      },
+      {
+        "id": 1000178,
+        "key": "balandchaqir",
+        "title": "Balandchaqir",
+        "whereTitle": "Balandchaqirda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.796236, 39.883375]
+        },
+        "webUri": "uz/balandchaqir",
+        "webUriInfo": {
+          "uz": "uz/balandchaqir",
+          "ru": "ru/balandchakir"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Jizzax viloyati", "Balandchaqir"]
+      }
+    ],
+    "id": 1000146,
+    "key": "jizzax-viloyati",
+    "title": "Jizzax viloyati",
+    "whereTitle": "Jizzax viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [67.642344, 40.258887]
+    },
+    "webUri": "uz/jizzax-viloyati",
+    "webUriInfo": {
+      "uz": "uz/jizzax-viloyati",
+      "ru": "ru/dzhizakskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Jizzax viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000182,
+        "key": "qarshi",
+        "title": "Qarshi",
+        "whereTitle": "Qarshida",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.789979, 38.841605]
+        },
+        "webUri": "uz/qarshi",
+        "webUriInfo": { "uz": "uz/qarshi", "ru": "ru/karshi" },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Qarshi"]
+      },
+      {
+        "id": 1000184,
+        "key": "beshkent",
+        "title": "Beshkent",
+        "whereTitle": "Beshkentda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.649375, 38.821461]
+        },
+        "webUri": "uz/beshkent",
+        "webUriInfo": {
+          "uz": "uz/beshkent",
+          "ru": "ru/beshkent"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Beshkent"]
+      },
+      {
+        "id": 1000186,
+        "key": "guzor",
+        "title": "G\u0027uzor",
+        "whereTitle": "G\u02bbuzorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.252558, 38.626758]
+        },
+        "webUri": "uz/guzor",
+        "webUriInfo": { "uz": "uz/guzor", "ru": "ru/guzar" },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "G\u0027uzor"]
+      },
+      {
+        "id": 1000188,
+        "key": "dehqonobod",
+        "title": "Dehqonobod",
+        "whereTitle": "Dehqonobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.033005, 40.531097]
+        },
+        "webUri": "uz/dehqonobod",
+        "webUriInfo": {
+          "uz": "uz/dehqonobod",
+          "ru": "ru/dekhkanabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Dehqonobod"]
+      },
+      {
+        "id": 1000190,
+        "key": "qamashi",
+        "title": "Qamashi",
+        "whereTitle": "Qamashida",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.480101, 38.812352]
+        },
+        "webUri": "uz/qamashi",
+        "webUriInfo": {
+          "uz": "uz/qamashi",
+          "ru": "ru/kamashi"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Qamashi"]
+      },
+      {
+        "id": 1000192,
+        "key": "koson",
+        "title": "Koson",
+        "whereTitle": "Kosonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.585352, 39.04156]
+        },
+        "webUri": "uz/koson",
+        "webUriInfo": { "uz": "uz/koson", "ru": "ru/kasan" },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Koson"]
+      },
+      {
+        "id": 1000194,
+        "key": "kasbi",
+        "title": "Kasbi",
+        "whereTitle": "Kasbida",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.411501, 38.948529]
+        },
+        "webUri": "uz/kasbi",
+        "webUriInfo": { "uz": "uz/kasbi", "ru": "ru/kasbi" },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Kasbi"]
+      },
+      {
+        "id": 1000196,
+        "key": "kitob",
+        "title": "Kitob",
+        "whereTitle": "Kitobda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.874929, 39.118515]
+        },
+        "webUri": "uz/kitob",
+        "webUriInfo": { "uz": "uz/kitob", "ru": "ru/kitab" },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Kitob"]
+      },
+      {
+        "id": 1000198,
+        "key": "mirishkor",
+        "title": "Mirishkor",
+        "whereTitle": "Mirishkorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.275936, 38.849551]
+        },
+        "webUri": "uz/mirishkor",
+        "webUriInfo": {
+          "uz": "uz/mirishkor",
+          "ru": "ru/yangi-mirishkor"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Mirishkor"]
+      },
+      {
+        "id": 1000200,
+        "key": "muborak",
+        "title": "Muborak",
+        "whereTitle": "Muborakda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.156811, 39.261236]
+        },
+        "webUri": "uz/muborak",
+        "webUriInfo": {
+          "uz": "uz/muborak",
+          "ru": "ru/mubarek"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Muborak"]
+      },
+      {
+        "id": 1000202,
+        "key": "nishon",
+        "title": "Nishon",
+        "whereTitle": "Nishonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.69677, 38.645387]
+        },
+        "webUri": "uz/nishon",
+        "webUriInfo": {
+          "uz": "uz/nishon",
+          "ru": "ru/yangi-nishan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Nishon"]
+      },
+      {
+        "id": 1000204,
+        "key": "talimarjon",
+        "title": "Talimarjon",
+        "whereTitle": "Talimarjonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.551935, 38.298357]
+        },
+        "webUri": "uz/talimarjon",
+        "webUriInfo": {
+          "uz": "uz/talimarjon",
+          "ru": "ru/talimardzhan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Talimarjon"]
+      },
+      {
+        "id": 1000206,
+        "key": "chiroqchi",
+        "title": "Chiroqchi",
+        "whereTitle": "Chiroqchida",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.572565, 39.032032]
+        },
+        "webUri": "uz/chiroqchi",
+        "webUriInfo": {
+          "uz": "uz/chiroqchi",
+          "ru": "ru/chirakchi"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Chiroqchi"]
+      },
+      {
+        "id": 1000208,
+        "key": "shahrisabz",
+        "title": "Shahrisabz",
+        "whereTitle": "Shahrisabzda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.829474, 39.060073]
+        },
+        "webUri": "uz/shahrisabz",
+        "webUriInfo": {
+          "uz": "uz/shahrisabz",
+          "ru": "ru/shakhrisabz"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Shahrisabz"]
+      },
+      {
+        "id": 1000210,
+        "key": "yakkabog",
+        "title": "Yakkabog\u0027",
+        "whereTitle": "Yakkabog\u2018da",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.68789, 38.977353]
+        },
+        "webUri": "uz/yakkabog",
+        "webUriInfo": {
+          "uz": "uz/yakkabog",
+          "ru": "ru/yakkabag"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Yakkabog\u0027"]
+      },
+      {
+        "id": 1000212,
+        "key": "karashina",
+        "title": "Karashina",
+        "whereTitle": "Karashinada",
+        "location": {
+          "type": "Point",
+          "coordinates": [31.307842, 49.403121]
+        },
+        "webUri": "uz/karashina",
+        "webUriInfo": {
+          "uz": "uz/karashina",
+          "ru": "ru/karashina"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Karashina"]
+      },
+      {
+        "id": 1000214,
+        "key": "muglon",
+        "title": "Mug\u02bblon",
+        "whereTitle": "Mug\u02bblonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.403515, 38.92078]
+        },
+        "webUri": "uz/muglon",
+        "webUriInfo": { "uz": "uz/muglon", "ru": "ru/muglan" },
+        "isWholeCountry": false,
+        "titlePath": ["Qashqadaryo viloyati", "Mug\u02bblon"]
+      }
+    ],
+    "id": 1000180,
+    "key": "qashqadaryo-viloyati",
+    "title": "Qashqadaryo viloyati",
+    "whereTitle": "Qashqadaryo viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [66.12265, 38.924712]
+    },
+    "webUri": "uz/qashqadaryo-viloyati",
+    "webUriInfo": {
+      "uz": "uz/qashqadaryo-viloyati",
+      "ru": "ru/kashkadarinskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Qashqadaryo viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000218,
+        "key": "navoiy",
+        "title": "Navoiy",
+        "whereTitle": "Navoiyda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.373996, 40.103107]
+        },
+        "webUri": "uz/navoiy",
+        "webUriInfo": { "uz": "uz/navoiy", "ru": "ru/navoi" },
+        "isWholeCountry": false,
+        "titlePath": ["Navoiy viloyati", "Navoiy"]
+      },
+      {
+        "id": 1000220,
+        "key": "zarafshon",
+        "title": "Zarafshon",
+        "whereTitle": "Zarafshonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.202665, 41.568824]
+        },
+        "webUri": "uz/zarafshon",
+        "webUriInfo": {
+          "uz": "uz/zarafshon",
+          "ru": "ru/zarafshan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Navoiy viloyati", "Zarafshon"]
+      },
+      {
+        "id": 1000222,
+        "key": "qiziltepa",
+        "title": "Qiziltepa",
+        "whereTitle": "Qiziltepada",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.847009, 40.035485]
+        },
+        "webUri": "uz/qiziltepa",
+        "webUriInfo": {
+          "uz": "uz/qiziltepa",
+          "ru": "ru/kyzyltepa"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Navoiy viloyati", "Qiziltepa"]
+      },
+      {
+        "id": 1000224,
+        "key": "nurota",
+        "title": "Nurota",
+        "whereTitle": "Nurotada",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.693006, 40.564805]
+        },
+        "webUri": "uz/nurota",
+        "webUriInfo": { "uz": "uz/nurota", "ru": "ru/nurata" },
+        "isWholeCountry": false,
+        "titlePath": ["Navoiy viloyati", "Nurota"]
+      },
+      {
+        "id": 1000226,
+        "key": "uchquduq",
+        "title": "Uchquduq",
+        "whereTitle": "Uchquduqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [63.562499, 42.152753]
+        },
+        "webUri": "uz/uchquduq",
+        "webUriInfo": {
+          "uz": "uz/uchquduq",
+          "ru": "ru/uchkuduk"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Navoiy viloyati", "Uchquduq"]
+      },
+      {
+        "id": 1000228,
+        "key": "yangirobot",
+        "title": "Yangirobot",
+        "whereTitle": "Yangirobotda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.969121, 40.030527]
+        },
+        "webUri": "uz/yangirobot",
+        "webUriInfo": {
+          "uz": "uz/yangirobot",
+          "ru": "ru/yangirabat"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Navoiy viloyati", "Yangirobot"]
+      },
+      {
+        "id": 1000230,
+        "key": "karmana",
+        "title": "Karmana",
+        "whereTitle": "Karmanada",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.362058, 40.140057]
+        },
+        "webUri": "uz/karmana",
+        "webUriInfo": {
+          "uz": "uz/karmana",
+          "ru": "ru/karmana"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Navoiy viloyati", "Karmana"]
+      },
+      {
+        "id": 1000232,
+        "key": "konimex",
+        "title": "Konimex",
+        "whereTitle": "Konimexda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.041925, 40.279855]
+        },
+        "webUri": "uz/konimex",
+        "webUriInfo": {
+          "uz": "uz/konimex",
+          "ru": "ru/kanimekh"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Navoiy viloyati", "Konimex"]
+      },
+      {
+        "id": 1000234,
+        "key": "beshrobot",
+        "title": "Beshrobot",
+        "whereTitle": "Beshrabotda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.506565, 40.007044]
+        },
+        "webUri": "uz/beshrobot",
+        "webUriInfo": {
+          "uz": "uz/beshrobot",
+          "ru": "ru/beshrabat"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Navoiy viloyati", "Beshrobot"]
+      },
+      {
+        "id": 1000236,
+        "key": "tomdibuloq",
+        "title": "Tomdibuloq",
+        "whereTitle": "Tomdibuloqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.620804, 41.749757]
+        },
+        "webUri": "uz/tomdibuloq",
+        "webUriInfo": {
+          "uz": "uz/tomdibuloq",
+          "ru": "ru/tamdybulak"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Navoiy viloyati", "Tomdibuloq"]
+      }
+    ],
+    "id": 1000216,
+    "key": "navoiy-viloyati",
+    "title": "Navoiy viloyati",
+    "whereTitle": "Navoiy viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [64.191741, 41.577037]
+    },
+    "webUri": "uz/navoiy-viloyati",
+    "webUriInfo": {
+      "uz": "uz/navoiy-viloyati",
+      "ru": "ru/navoiyskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Navoiy viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000240,
+        "key": "namangan",
+        "title": "Namangan",
+        "whereTitle": "Namanganda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.672579, 41.000085]
+        },
+        "webUri": "uz/namangan",
+        "webUriInfo": {
+          "uz": "uz/namangan",
+          "ru": "ru/namangan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Namangan viloyati", "Namangan"]
+      },
+      {
+        "id": 1000242,
+        "key": "kosonsoy",
+        "title": "Kosonsoy",
+        "whereTitle": "Kosonsoyda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.544452, 41.254658]
+        },
+        "webUri": "uz/kosonsoy",
+        "webUriInfo": {
+          "uz": "uz/kosonsoy",
+          "ru": "ru/kasansay"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Namangan viloyati", "Kosonsoy"]
+      },
+      {
+        "id": 1000244,
+        "key": "pop",
+        "title": "Pop",
+        "whereTitle": "Popda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.097208, 40.875109]
+        },
+        "webUri": "uz/pop",
+        "webUriInfo": { "uz": "uz/pop", "ru": "ru/pap" },
+        "isWholeCountry": false,
+        "titlePath": ["Namangan viloyati", "Pop"]
+      },
+      {
+        "id": 1000246,
+        "key": "toraqorgon",
+        "title": "To\u0027raqo\u0027rg\u0027on",
+        "whereTitle": "To\u2018raqo\u2018rg\u2018onda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.507199, 41.000813]
+        },
+        "webUri": "uz/toraqorgon",
+        "webUriInfo": {
+          "uz": "uz/toraqorgon",
+          "ru": "ru/turakurgan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Namangan viloyati", "To\u0027raqo\u0027rg\u0027on"]
+      },
+      {
+        "id": 1000248,
+        "key": "uchqorgon",
+        "title": "Uchqo\u0027rg\u0027on",
+        "whereTitle": "Uchqo\u2018rg\u2018onda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.077593, 41.114592]
+        },
+        "webUri": "uz/uchqorgon",
+        "webUriInfo": {
+          "uz": "uz/uchqorgon",
+          "ru": "ru/uchkurgan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Namangan viloyati", "Uchqo\u0027rg\u0027on"]
+      },
+      {
+        "id": 1000250,
+        "key": "chortoq",
+        "title": "Chortoq",
+        "whereTitle": "Chortoqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.814387, 41.077012]
+        },
+        "webUri": "uz/chortoq",
+        "webUriInfo": {
+          "uz": "uz/chortoq",
+          "ru": "ru/chartak"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Namangan viloyati", "Chortoq"]
+      },
+      {
+        "id": 1000252,
+        "key": "chust",
+        "title": "Chust",
+        "whereTitle": "Chustda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.226422, 41.002399]
+        },
+        "webUri": "uz/chust",
+        "webUriInfo": { "uz": "uz/chust", "ru": "ru/chust" },
+        "isWholeCountry": false,
+        "titlePath": ["Namangan viloyati", "Chust"]
+      },
+      {
+        "id": 1000254,
+        "key": "xaqqulobod",
+        "title": "Xaqqulobod",
+        "whereTitle": "Xaqqulobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.118952, 40.915545]
+        },
+        "webUri": "uz/xaqqulobod",
+        "webUriInfo": {
+          "uz": "uz/xaqqulobod",
+          "ru": "ru/khakkulabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Namangan viloyati", "Xaqqulobod"]
+      },
+      {
+        "id": 1000256,
+        "key": "jomashoy",
+        "title": "Jomasho\u02bby",
+        "whereTitle": "Jomasho\u02bbyda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.459184, 40.865432]
+        },
+        "webUri": "uz/jomashoy",
+        "webUriInfo": {
+          "uz": "uz/jomashoy",
+          "ru": "ru/dzhumashuy"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Namangan viloyati", "Jomasho\u02bby"]
+      },
+      {
+        "id": 1000258,
+        "key": "toshbuloq",
+        "title": "Toshbuloq",
+        "whereTitle": "Toshbuloqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.589431, 40.923224]
+        },
+        "webUri": "uz/toshbuloq",
+        "webUriInfo": {
+          "uz": "uz/toshbuloq",
+          "ru": "ru/tashbulak"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Namangan viloyati", "Toshbuloq"]
+      }
+    ],
+    "id": 1000238,
+    "key": "namangan-viloyati",
+    "title": "Namangan viloyati",
+    "whereTitle": "Namangan viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [71.401365, 40.99822]
+    },
+    "webUri": "uz/namangan-viloyati",
+    "webUriInfo": {
+      "uz": "uz/namangan-viloyati",
+      "ru": "ru/namanganskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Namangan viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000264,
+        "key": "nukus",
+        "title": "Nukus",
+        "whereTitle": "Nukusda",
+        "location": {
+          "type": "Point",
+          "coordinates": [59.617996, 42.460341]
+        },
+        "webUri": "uz/nukus",
+        "webUriInfo": { "uz": "uz/nukus", "ru": "ru/nukus" },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Nukus"]
+      },
+      {
+        "id": 1000266,
+        "key": "beruniy",
+        "title": "Beruniy",
+        "whereTitle": "Beruniyda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.7568, 41.691312]
+        },
+        "webUri": "uz/beruniy",
+        "webUriInfo": { "uz": "uz/beruniy", "ru": "ru/beruni" },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Beruniy"]
+      },
+      {
+        "id": 1000268,
+        "key": "boston",
+        "title": "Bo\u0027ston",
+        "whereTitle": "Bo\u02bbstonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.910205, 41.8386]
+        },
+        "webUri": "uz/boston",
+        "webUriInfo": { "uz": "uz/boston", "ru": "ru/bustan" },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Bo\u0027ston"]
+      },
+      {
+        "id": 1000270,
+        "key": "qongirot",
+        "title": "Qo\u0027ng\u0027irot",
+        "whereTitle": "Qo\u2018ng\u2018irotda",
+        "location": {
+          "type": "Point",
+          "coordinates": [58.847529, 43.045816]
+        },
+        "webUri": "uz/qongirot",
+        "webUriInfo": {
+          "uz": "uz/qongirot",
+          "ru": "ru/kungrad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Qo\u0027ng\u0027irot"]
+      },
+      {
+        "id": 1000272,
+        "key": "mangit",
+        "title": "Mang\u0027it",
+        "whereTitle": "Mang\u2018itda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.066085, 42.113296]
+        },
+        "webUri": "uz/mangit",
+        "webUriInfo": { "uz": "uz/mangit", "ru": "ru/mangit" },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Mang\u0027it"]
+      },
+      {
+        "id": 1000274,
+        "key": "moynoq",
+        "title": "Mo\u0027ynoq",
+        "whereTitle": "Mo\u2018ynoqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [59.028055, 43.766605]
+        },
+        "webUri": "uz/moynoq",
+        "webUriInfo": { "uz": "uz/moynoq", "ru": "ru/muynak" },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Mo\u0027ynoq"]
+      },
+      {
+        "id": 1000276,
+        "key": "taxiatosh",
+        "title": "Taxiatosh",
+        "whereTitle": "Taxiatoshda",
+        "location": {
+          "type": "Point",
+          "coordinates": [59.575506, 42.333846]
+        },
+        "webUri": "uz/taxiatosh",
+        "webUriInfo": {
+          "uz": "uz/taxiatosh",
+          "ru": "ru/takhiatash"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Taxiatosh"]
+      },
+      {
+        "id": 1000278,
+        "key": "tortkol",
+        "title": "To\u0027rtko\u0027l",
+        "whereTitle": "To\u2018rtko\u2018lda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.999003, 41.55311]
+        },
+        "webUri": "uz/tortkol",
+        "webUriInfo": {
+          "uz": "uz/tortkol",
+          "ru": "ru/turtkul"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "To\u0027rtko\u0027l"]
+      },
+      {
+        "id": 1000280,
+        "key": "xojayli",
+        "title": "Xo\u0027jayli",
+        "whereTitle": "Xo\u2018jaylida",
+        "location": {
+          "type": "Point",
+          "coordinates": [59.453057, 42.412544]
+        },
+        "webUri": "uz/xojayli",
+        "webUriInfo": {
+          "uz": "uz/xojayli",
+          "ru": "ru/khodzheyli"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Xo\u0027jayli"]
+      },
+      {
+        "id": 1000282,
+        "key": "chimboy",
+        "title": "Chimboy",
+        "whereTitle": "Chimboyda",
+        "location": {
+          "type": "Point",
+          "coordinates": [59.770027, 42.934882]
+        },
+        "webUri": "uz/chimboy",
+        "webUriInfo": {
+          "uz": "uz/chimboy",
+          "ru": "ru/chimbay"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Chimboy"]
+      },
+      {
+        "id": 1000284,
+        "key": "shumanay",
+        "title": "Shumanay",
+        "whereTitle": "Shumanayda",
+        "location": {
+          "type": "Point",
+          "coordinates": [58.924353, 42.635423]
+        },
+        "webUri": "uz/shumanay",
+        "webUriInfo": {
+          "uz": "uz/shumanay",
+          "ru": "ru/shumanay"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Shumanay"]
+      },
+      {
+        "id": 1000286,
+        "key": "qoraozak",
+        "title": "Qorao\u02bbzak",
+        "whereTitle": "Qorao\u02bbzakda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.02178, 43.028261]
+        },
+        "webUri": "uz/qoraozak",
+        "webUriInfo": {
+          "uz": "uz/qoraozak",
+          "ru": "ru/karauzyak"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Qorao\u02bbzak"]
+      },
+      {
+        "id": 1000288,
+        "key": "kegeyli",
+        "title": "Kegeyli",
+        "whereTitle": "Kegeylida",
+        "location": {
+          "type": "Point",
+          "coordinates": [59.610433, 42.77838]
+        },
+        "webUri": "uz/kegeyli",
+        "webUriInfo": {
+          "uz": "uz/kegeyli",
+          "ru": "ru/kegeyli"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Kegeyli"]
+      },
+      {
+        "id": 1000290,
+        "key": "qanlikol",
+        "title": "Qanliko\u02bbl",
+        "whereTitle": "Qanliko\u02bblda",
+        "location": {
+          "type": "Point",
+          "coordinates": [59.008768, 42.836341]
+        },
+        "webUri": "uz/qanlikol",
+        "webUriInfo": {
+          "uz": "uz/qanlikol",
+          "ru": "ru/kanlykul"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Qanliko\u02bbl"]
+      },
+      {
+        "id": 1000292,
+        "key": "oqmangit",
+        "title": "Oqmang\u02bbit",
+        "whereTitle": "Oqmang\u02bbitda",
+        "location": {
+          "type": "Point",
+          "coordinates": [59.540705, 42.597671]
+        },
+        "webUri": "uz/oqmangit",
+        "webUriInfo": {
+          "uz": "uz/oqmangit",
+          "ru": "ru/akmangit"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Oqmang\u02bbit"]
+      },
+      {
+        "id": 1000294,
+        "key": "taxtakopir",
+        "title": "Taxtako\u02bbpir",
+        "whereTitle": "Taxtako\u02bbpirda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.278914, 43.025592]
+        },
+        "webUri": "uz/taxtakopir",
+        "webUriInfo": {
+          "uz": "uz/taxtakopir",
+          "ru": "ru/takhtakupyr"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Qoraqalpog\u2018iston", "Taxtako\u02bbpir"]
+      }
+    ],
+    "id": 1000262,
+    "key": "qoraqalpogiston",
+    "title": "Qoraqalpog\u2018iston",
+    "whereTitle": "Qoraqalpog\u2018istonda",
+    "location": {
+      "type": "Point",
+      "coordinates": [58.852587, 43.501143]
+    },
+    "webUri": "uz/qoraqalpogiston",
+    "webUriInfo": {
+      "uz": "uz/qoraqalpogiston",
+      "ru": "ru/karakalpakstan"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Qoraqalpog\u2018iston"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000298,
+        "key": "samarqand",
+        "title": "Samarqand",
+        "whereTitle": "Samarqandda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.975836, 39.654397]
+        },
+        "webUri": "uz/samarqand",
+        "webUriInfo": {
+          "uz": "uz/samarqand",
+          "ru": "ru/samarkand"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Samarqand"]
+      },
+      {
+        "id": 1000300,
+        "key": "oqtosh",
+        "title": "Oqtosh",
+        "whereTitle": "Oqtoshda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.925364, 39.921635]
+        },
+        "webUri": "uz/oqtosh",
+        "webUriInfo": { "uz": "uz/oqtosh", "ru": "ru/aktash" },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Oqtosh"]
+      },
+      {
+        "id": 1000302,
+        "key": "bulungur",
+        "title": "Bulung\u0027ur",
+        "whereTitle": "Bulung\u2018urda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.2729, 39.762947]
+        },
+        "webUri": "uz/bulungur",
+        "webUriInfo": {
+          "uz": "uz/bulungur",
+          "ru": "ru/bulungur"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Bulung\u0027ur"]
+      },
+      {
+        "id": 1000304,
+        "key": "jomboy",
+        "title": "Jomboy",
+        "whereTitle": "Jomboyda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.098897, 39.695721]
+        },
+        "webUri": "uz/jomboy",
+        "webUriInfo": {
+          "uz": "uz/jomboy",
+          "ru": "ru/dzhambay"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Jomboy"]
+      },
+      {
+        "id": 1000306,
+        "key": "juma",
+        "title": "Juma",
+        "whereTitle": "Jumada",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.663959, 39.711819]
+        },
+        "webUri": "uz/juma",
+        "webUriInfo": { "uz": "uz/juma", "ru": "ru/dzhuma" },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Juma"]
+      },
+      {
+        "id": 1000308,
+        "key": "ziadin",
+        "title": "Ziadin",
+        "whereTitle": "Ziadinda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.659607, 40.030119]
+        },
+        "webUri": "uz/ziadin",
+        "webUriInfo": { "uz": "uz/ziadin", "ru": "ru/ziadin" },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Ziadin"]
+      },
+      {
+        "id": 1000310,
+        "key": "ishtixon",
+        "title": "Ishtixon",
+        "whereTitle": "Ishtixonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.486183, 39.9653]
+        },
+        "webUri": "uz/ishtixon",
+        "webUriInfo": {
+          "uz": "uz/ishtixon",
+          "ru": "ru/ishtykhan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Ishtixon"]
+      },
+      {
+        "id": 1000312,
+        "key": "kattaqorgon",
+        "title": "Kattaqo\u0027rg\u0027on",
+        "whereTitle": "Kattaqo\u2018rg\u2018onda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.265035, 39.903504]
+        },
+        "webUri": "uz/kattaqorgon",
+        "webUriInfo": {
+          "uz": "uz/kattaqorgon",
+          "ru": "ru/kattakurgan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Kattaqo\u0027rg\u0027on"]
+      },
+      {
+        "id": 1000314,
+        "key": "nurobod",
+        "title": "Nurobod",
+        "whereTitle": "Nurobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.283298, 39.608295]
+        },
+        "webUri": "uz/nurobod",
+        "webUriInfo": {
+          "uz": "uz/nurobod",
+          "ru": "ru/nurabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Nurobod"]
+      },
+      {
+        "id": 1000316,
+        "key": "urgut",
+        "title": "Urgut",
+        "whereTitle": "Urgutda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.243391, 39.408814]
+        },
+        "webUri": "uz/urgut",
+        "webUriInfo": { "uz": "uz/urgut", "ru": "ru/urgut" },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Urgut"]
+      },
+      {
+        "id": 1000318,
+        "key": "chelak",
+        "title": "Chelak",
+        "whereTitle": "Chelakda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.858462, 39.920334]
+        },
+        "webUri": "uz/chelak",
+        "webUriInfo": { "uz": "uz/chelak", "ru": "ru/chelek" },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Chelak"]
+      },
+      {
+        "id": 1000320,
+        "key": "loish",
+        "title": "Loish",
+        "whereTitle": "Loishda",
+        "location": {
+          "type": "Point",
+          "coordinates": [35.186596, 31.730802]
+        },
+        "webUri": "uz/loish",
+        "webUriInfo": { "uz": "uz/loish", "ru": "ru/laish" },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Loish"]
+      },
+      {
+        "id": 1000322,
+        "key": "payshanba",
+        "title": "Payshanba",
+        "whereTitle": "Payshanbada",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.229893, 40.010864]
+        },
+        "webUri": "uz/payshanba",
+        "webUriInfo": {
+          "uz": "uz/payshanba",
+          "ru": "ru/payshanba"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Payshanba"]
+      },
+      {
+        "id": 1000324,
+        "key": "qoshrobod",
+        "title": "Qo\u02bbshrobod",
+        "whereTitle": "Qo\u02bbshrobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.649568, 40.246086]
+        },
+        "webUri": "uz/qoshrobod",
+        "webUriInfo": {
+          "uz": "uz/qoshrobod",
+          "ru": "ru/koshrabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Qo\u02bbshrobod"]
+      },
+      {
+        "id": 1000326,
+        "key": "darband",
+        "title": "Darband",
+        "whereTitle": "Darbandda",
+        "location": {
+          "type": "Point",
+          "coordinates": [70.116248, 38.899822]
+        },
+        "webUri": "uz/darband",
+        "webUriInfo": {
+          "uz": "uz/darband",
+          "ru": "ru/derbent"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Darband"]
+      },
+      {
+        "id": 1000328,
+        "key": "payariq",
+        "title": "Payariq",
+        "whereTitle": "Payariqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.846353, 39.990041]
+        },
+        "webUri": "uz/payariq",
+        "webUriInfo": {
+          "uz": "uz/payariq",
+          "ru": "ru/payaryk"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Payariq"]
+      },
+      {
+        "id": 1000330,
+        "key": "gozalkent",
+        "title": "Go\u0027zalkent",
+        "whereTitle": "Go\u2018zalkentda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.579958, 39.752221]
+        },
+        "webUri": "uz/gozalkent",
+        "webUriInfo": {
+          "uz": "uz/gozalkent",
+          "ru": "ru/guzalkent"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Go\u0027zalkent"]
+      },
+      {
+        "id": 1000332,
+        "key": "gulobod",
+        "title": "Gulobod",
+        "whereTitle": "Gulobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [66.9751, 39.5708]
+        },
+        "webUri": "uz/gulobod",
+        "webUriInfo": {
+          "uz": "uz/gulobod",
+          "ru": "ru/gyulabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Gulobod"]
+      },
+      {
+        "id": 1000334,
+        "key": "tayloq",
+        "title": "Tayloq",
+        "whereTitle": "Tayloqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.093156, 39.598629]
+        },
+        "webUri": "uz/tayloq",
+        "webUriInfo": { "uz": "uz/tayloq", "ru": "ru/taylak" },
+        "isWholeCountry": false,
+        "titlePath": ["Samarqand viloyati", "Tayloq"]
+      }
+    ],
+    "id": 1000296,
+    "key": "samarqand-viloyati",
+    "title": "Samarqand viloyati",
+    "whereTitle": "Samarqand viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [66.409644, 39.784486]
+    },
+    "webUri": "uz/samarqand-viloyati",
+    "webUriInfo": {
+      "uz": "uz/samarqand-viloyati",
+      "ru": "ru/samarkandskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Samarqand viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000338,
+        "key": "termiz",
+        "title": "Termiz",
+        "whereTitle": "Termizda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.275451, 37.228581]
+        },
+        "webUri": "uz/termiz",
+        "webUriInfo": { "uz": "uz/termiz", "ru": "ru/termez" },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Termiz"]
+      },
+      {
+        "id": 1000340,
+        "key": "boysun",
+        "title": "Boysun",
+        "whereTitle": "Boysunda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.207081, 38.208254]
+        },
+        "webUri": "uz/boysun",
+        "webUriInfo": { "uz": "uz/boysun", "ru": "ru/baysun" },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Boysun"]
+      },
+      {
+        "id": 1000342,
+        "key": "denov",
+        "title": "Denov",
+        "whereTitle": "Denovda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.896259, 38.274936]
+        },
+        "webUri": "uz/denov",
+        "webUriInfo": { "uz": "uz/denov", "ru": "ru/denau" },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Denov"]
+      },
+      {
+        "id": 1000344,
+        "key": "jarqorgon",
+        "title": "Jarqo\u0027rg\u0027on",
+        "whereTitle": "Jarqo\u2018rg\u2018onda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.413693, 37.508386]
+        },
+        "webUri": "uz/jarqorgon",
+        "webUriInfo": {
+          "uz": "uz/jarqorgon",
+          "ru": "ru/dzharkurgan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Jarqo\u0027rg\u0027on"]
+      },
+      {
+        "id": 1000346,
+        "key": "qiziriq",
+        "title": "Qiziriq",
+        "whereTitle": "Qiziriqda",
+        "location": { "type": "Point", "coordinates": [0, 0] },
+        "webUri": "uz/qiziriq",
+        "webUriInfo": {
+          "uz": "uz/qiziriq",
+          "ru": "ru/kizirik"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Qiziriq"]
+      },
+      {
+        "id": 1000348,
+        "key": "qumqorgon",
+        "title": "Qumqo\u0027rg\u0027on",
+        "whereTitle": "Qumqo\u2018rg\u2018onda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.591793, 37.825369]
+        },
+        "webUri": "uz/qumqorgon",
+        "webUriInfo": {
+          "uz": "uz/qumqorgon",
+          "ru": "ru/kumkurgan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Qumqo\u0027rg\u0027on"]
+      },
+      {
+        "id": 1000350,
+        "key": "muzrobod",
+        "title": "Muzrobod",
+        "whereTitle": "Muzrobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.331812, 41.347479]
+        },
+        "webUri": "uz/muzrobod",
+        "webUriInfo": {
+          "uz": "uz/muzrobod",
+          "ru": "ru/muzrabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Muzrobod"]
+      },
+      {
+        "id": 1000352,
+        "key": "shargun",
+        "title": "Sharg\u0027un",
+        "whereTitle": "Sharg\u2018unda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.963543, 38.465571]
+        },
+        "webUri": "uz/shargun",
+        "webUriInfo": {
+          "uz": "uz/shargun",
+          "ru": "ru/shargun"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Sharg\u0027un"]
+      },
+      {
+        "id": 1000354,
+        "key": "sherobod",
+        "title": "Sherobod",
+        "whereTitle": "Sherobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.016494, 37.675182]
+        },
+        "webUri": "uz/sherobod",
+        "webUriInfo": {
+          "uz": "uz/sherobod",
+          "ru": "ru/sherabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Sherobod"]
+      },
+      {
+        "id": 1000356,
+        "key": "shorchi",
+        "title": "Sho\u0027rchi",
+        "whereTitle": "Sho\u2018rchida",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.790599, 38.010966]
+        },
+        "webUri": "uz/shorchi",
+        "webUriInfo": {
+          "uz": "uz/shorchi",
+          "ru": "ru/shurchi"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Sho\u0027rchi"]
+      },
+      {
+        "id": 1000358,
+        "key": "angor",
+        "title": "Angor",
+        "whereTitle": "Angorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.14958, 37.462937]
+        },
+        "webUri": "uz/angor",
+        "webUriInfo": { "uz": "uz/angor", "ru": "ru/angor" },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Angor"]
+      },
+      {
+        "id": 1000360,
+        "key": "qorlik",
+        "title": "Qorlik",
+        "whereTitle": "Qorlikda",
+        "location": {
+          "type": "Point",
+          "coordinates": [104.297333, 52.422831]
+        },
+        "webUri": "uz/qorlik",
+        "webUriInfo": { "uz": "uz/qorlik", "ru": "ru/karluk" },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Qorlik"]
+      },
+      {
+        "id": 1000362,
+        "key": "bandixon",
+        "title": "Bandixon",
+        "whereTitle": "Bandixonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.385441, 37.862306]
+        },
+        "webUri": "uz/bandixon",
+        "webUriInfo": {
+          "uz": "uz/bandixon",
+          "ru": "ru/bandikhon"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Bandixon"]
+      },
+      {
+        "id": 1000364,
+        "key": "sariq",
+        "title": "Sariq",
+        "whereTitle": "Sariqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [65.166315, 39.212048]
+        },
+        "webUri": "uz/sariq",
+        "webUriInfo": { "uz": "uz/sariq", "ru": "ru/saryk" },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Sariq"]
+      },
+      {
+        "id": 1000366,
+        "key": "xalqobod",
+        "title": "Xalqobod",
+        "whereTitle": "Xalqobodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [59.727681, 42.686872]
+        },
+        "webUri": "uz/xalqobod",
+        "webUriInfo": {
+          "uz": "uz/xalqobod",
+          "ru": "ru/khalkabad"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Xalqobod"]
+      },
+      {
+        "id": 1000368,
+        "key": "sariosiyo",
+        "title": "Sariosiyo",
+        "whereTitle": "Sariosiyoda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.956869, 38.412765]
+        },
+        "webUri": "uz/sariosiyo",
+        "webUriInfo": {
+          "uz": "uz/sariosiyo",
+          "ru": "ru/sariasiya"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Sariosiyo"]
+      },
+      {
+        "id": 1000370,
+        "key": "uchqizil",
+        "title": "Uchqizil",
+        "whereTitle": "Uchqizilda",
+        "location": {
+          "type": "Point",
+          "coordinates": [67.229089, 37.340849]
+        },
+        "webUri": "uz/uchqizil",
+        "webUriInfo": {
+          "uz": "uz/uchqizil",
+          "ru": "ru/uchkyzyl"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Uchqizil"]
+      },
+      {
+        "id": 1000372,
+        "key": "uzun",
+        "title": "Uzun",
+        "whereTitle": "Uzunda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.006348, 38.366986]
+        },
+        "webUri": "uz/uzun",
+        "webUriInfo": { "uz": "uz/uzun", "ru": "ru/uzun" },
+        "isWholeCountry": false,
+        "titlePath": ["Surxondaryo viloyati", "Uzun"]
+      }
+    ],
+    "id": 1000336,
+    "key": "surxondaryo-viloyati",
+    "title": "Surxondaryo viloyati",
+    "whereTitle": "Surxondaryo viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [67.577998, 37.870426]
+    },
+    "webUri": "uz/surxondaryo-viloyati",
+    "webUriInfo": {
+      "uz": "uz/surxondaryo-viloyati",
+      "ru": "ru/surkhandarinskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Surxondaryo viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000376,
+        "key": "guliston",
+        "title": "Guliston",
+        "whereTitle": "Gulistonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.775521, 40.498305]
+        },
+        "webUri": "uz/guliston",
+        "webUriInfo": {
+          "uz": "uz/guliston",
+          "ru": "ru/gulistan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Guliston"]
+      },
+      {
+        "id": 1000378,
+        "key": "baxt",
+        "title": "Baxt",
+        "whereTitle": "Baxtda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.692409, 40.714196]
+        },
+        "webUri": "uz/baxt",
+        "webUriInfo": { "uz": "uz/baxt", "ru": "ru/bakht" },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Baxt"]
+      },
+      {
+        "id": 1000380,
+        "key": "sirdaryo",
+        "title": "Sirdaryo",
+        "whereTitle": "Sirdaryoda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.664229, 40.838844]
+        },
+        "webUri": "uz/sirdaryo",
+        "webUriInfo": {
+          "uz": "uz/sirdaryo",
+          "ru": "ru/syrdarya"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Sirdaryo"]
+      },
+      {
+        "id": 1000382,
+        "key": "shirin",
+        "title": "Shirin",
+        "whereTitle": "Shirinda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.127661, 40.230259]
+        },
+        "webUri": "uz/shirin",
+        "webUriInfo": { "uz": "uz/shirin", "ru": "ru/shirin" },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Shirin"]
+      },
+      {
+        "id": 1000384,
+        "key": "yangiyer",
+        "title": "Yangiyer",
+        "whereTitle": "Yangiyerda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.813655, 40.274089]
+        },
+        "webUri": "uz/yangiyer",
+        "webUriInfo": {
+          "uz": "uz/yangiyer",
+          "ru": "ru/yangiyer"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Yangiyer"]
+      },
+      {
+        "id": 1000386,
+        "key": "sardoba",
+        "title": "Sardoba",
+        "whereTitle": "Sardobada",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.413815, 40.544277]
+        },
+        "webUri": "uz/sardoba",
+        "webUriInfo": {
+          "uz": "uz/sardoba",
+          "ru": "ru/sardoba"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Sardoba"]
+      },
+      {
+        "id": 1000388,
+        "key": "boyovut",
+        "title": "Boyovut",
+        "whereTitle": "Boyovutda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.025145, 40.280969]
+        },
+        "webUri": "uz/boyovut",
+        "webUriInfo": { "uz": "uz/boyovut", "ru": "ru/bayaut" },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Boyovut"]
+      },
+      {
+        "id": 1000390,
+        "key": "navroz",
+        "title": "Navro\u02bbz",
+        "whereTitle": "Navro\u02bbzda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.200155, 41.229224]
+        },
+        "webUri": "uz/navroz",
+        "webUriInfo": { "uz": "uz/navroz", "ru": "ru/navruz" },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Navro\u02bbz"]
+      },
+      {
+        "id": 1000392,
+        "key": "terenozek",
+        "title": "Terenozek",
+        "whereTitle": "Terenozekda",
+        "location": {
+          "type": "Point",
+          "coordinates": [64.985412, 45.053372]
+        },
+        "webUri": "uz/terenozek",
+        "webUriInfo": {
+          "uz": "uz/terenozek",
+          "ru": "ru/terenozek"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Terenozek"]
+      },
+      {
+        "id": 1000394,
+        "key": "sayxun",
+        "title": "Sayxun",
+        "whereTitle": "Sayxunda",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.746861, 40.376911]
+        },
+        "webUri": "uz/sayxun",
+        "webUriInfo": { "uz": "uz/sayxun", "ru": "ru/saykhun" },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Sayxun"]
+      },
+      {
+        "id": 1000398,
+        "key": "xovos",
+        "title": "Xovos",
+        "whereTitle": "Xovosda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.836732, 40.215468]
+        },
+        "webUri": "uz/xovos",
+        "webUriInfo": { "uz": "uz/xovos", "ru": "ru/khavast" },
+        "isWholeCountry": false,
+        "titlePath": ["Sirdaryo viloyati", "Xovos"]
+      }
+    ],
+    "id": 1000374,
+    "key": "sirdaryo-viloyati",
+    "title": "Sirdaryo viloyati",
+    "whereTitle": "Sirdaryo viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [68.799261, 40.531794]
+    },
+    "webUri": "uz/sirdaryo-viloyati",
+    "webUriInfo": {
+      "uz": "uz/sirdaryo-viloyati",
+      "ru": "ru/syrdarinskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Sirdaryo viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000403,
+        "key": "fargona",
+        "title": "Farg\u2018ona",
+        "whereTitle": "Farg\u2018onada",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.783135, 40.389448]
+        },
+        "webUri": "uz/fargona",
+        "webUriInfo": {
+          "uz": "uz/fargona",
+          "ru": "ru/fergana"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Farg\u2018ona"]
+      },
+      {
+        "id": 1000405,
+        "key": "beshariq",
+        "title": "Beshariq",
+        "whereTitle": "Beshariqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [70.60618, 40.436647]
+        },
+        "webUri": "uz/beshariq",
+        "webUriInfo": {
+          "uz": "uz/beshariq",
+          "ru": "ru/besharyk"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Beshariq"]
+      },
+      {
+        "id": 1000407,
+        "key": "qoqon",
+        "title": "Qo\u0027qon",
+        "whereTitle": "Qo\u2018qonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [70.940425, 40.539151]
+        },
+        "webUri": "uz/qoqon",
+        "webUriInfo": { "uz": "uz/qoqon", "ru": "ru/kokand" },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Qo\u0027qon"]
+      },
+      {
+        "id": 1000409,
+        "key": "quva",
+        "title": "Quva",
+        "whereTitle": "Quvada",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.068835, 40.523886]
+        },
+        "webUri": "uz/quva",
+        "webUriInfo": { "uz": "uz/quva", "ru": "ru/kuva" },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Quva"]
+      },
+      {
+        "id": 1000411,
+        "key": "quvasoy",
+        "title": "Quvasoy",
+        "whereTitle": "Quvasoyda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.982624, 40.296393]
+        },
+        "webUri": "uz/quvasoy",
+        "webUriInfo": {
+          "uz": "uz/quvasoy",
+          "ru": "ru/kuvasay"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Quvasoy"]
+      },
+      {
+        "id": 1000413,
+        "key": "margilon",
+        "title": "Marg\u0027ilon",
+        "whereTitle": "Marg\u2018ilonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.720774, 40.469065]
+        },
+        "webUri": "uz/margilon",
+        "webUriInfo": {
+          "uz": "uz/margilon",
+          "ru": "ru/margilan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Marg\u0027ilon"]
+      },
+      {
+        "id": 1000415,
+        "key": "rishton",
+        "title": "Rishton",
+        "whereTitle": "Rishtonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.279755, 40.359273]
+        },
+        "webUri": "uz/rishton",
+        "webUriInfo": {
+          "uz": "uz/rishton",
+          "ru": "ru/rishtan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Rishton"]
+      },
+      {
+        "id": 1000417,
+        "key": "tinchlik",
+        "title": "Tinchlik",
+        "whereTitle": "Tinchlikda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.505852, 40.426865]
+        },
+        "webUri": "uz/tinchlik",
+        "webUriInfo": {
+          "uz": "uz/tinchlik",
+          "ru": "ru/tinchlik"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Tinchlik"]
+      },
+      {
+        "id": 1000419,
+        "key": "oltiariq",
+        "title": "Oltiariq",
+        "whereTitle": "Oltiariqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.47521, 40.391494]
+        },
+        "webUri": "uz/oltiariq",
+        "webUriInfo": {
+          "uz": "uz/oltiariq",
+          "ru": "ru/altyaryk"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Oltiariq"]
+      },
+      {
+        "id": 1000421,
+        "key": "bogdod",
+        "title": "Bog\u02bbdod",
+        "whereTitle": "Bag\u02bbdodda",
+        "location": {
+          "type": "Point",
+          "coordinates": [44.36604, 33.315258]
+        },
+        "webUri": "uz/bogdod",
+        "webUriInfo": { "uz": "uz/bogdod", "ru": "ru/bagdad" },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Bog\u02bbdod"]
+      },
+      {
+        "id": 1000423,
+        "key": "yangiqorgon",
+        "title": "Yangiqo\u02bbrg\u02bbon",
+        "whereTitle": "Yangiqo\u02bbrg\u02bbonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.143004, 40.556604]
+        },
+        "webUri": "uz/yangiqorgon",
+        "webUriInfo": {
+          "uz": "uz/yangiqorgon",
+          "ru": "ru/yangikurgan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Yangiqo\u02bbrg\u02bbon"]
+      },
+      {
+        "id": 1000425,
+        "key": "dangara",
+        "title": "Dang\u02bbara",
+        "whereTitle": "Dang\u02bbarada",
+        "location": {
+          "type": "Point",
+          "coordinates": [69.336681, 38.097865]
+        },
+        "webUri": "uz/dangara",
+        "webUriInfo": {
+          "uz": "uz/dangara",
+          "ru": "ru/dangara"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Dang\u02bbara"]
+      },
+      {
+        "id": 1000427,
+        "key": "langar",
+        "title": "Langar",
+        "whereTitle": "Langarda",
+        "location": {
+          "type": "Point",
+          "coordinates": [72.440243, 40.582868]
+        },
+        "webUri": "uz/langar",
+        "webUriInfo": { "uz": "uz/langar", "ru": "ru/langar" },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Langar"]
+      },
+      {
+        "id": 1000429,
+        "key": "ravon",
+        "title": "Ravon",
+        "whereTitle": "Ravonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [15.740649, 43.660063]
+        },
+        "webUri": "uz/ravon",
+        "webUriInfo": { "uz": "uz/ravon", "ru": "ru/ravan" },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Ravon"]
+      },
+      {
+        "id": 1000431,
+        "key": "toshloq",
+        "title": "Toshloq",
+        "whereTitle": "Toshloqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.757407, 40.485679]
+        },
+        "webUri": "uz/toshloq",
+        "webUriInfo": {
+          "uz": "uz/toshloq",
+          "ru": "ru/tashlak"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Toshloq"]
+      },
+      {
+        "id": 1000433,
+        "key": "uchkopriq",
+        "title": "Uchko\u02bbpriq",
+        "whereTitle": "Uchko\u02bbpriqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.057736, 40.545106]
+        },
+        "webUri": "uz/uchkopriq",
+        "webUriInfo": {
+          "uz": "uz/uchkopriq",
+          "ru": "ru/uchkuprik"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Uchko\u02bbpriq"]
+      },
+      {
+        "id": 1000435,
+        "key": "yaypan",
+        "title": "Yaypan",
+        "whereTitle": "Yaypanda",
+        "location": {
+          "type": "Point",
+          "coordinates": [70.813772, 40.377172]
+        },
+        "webUri": "uz/yaypan",
+        "webUriInfo": { "uz": "uz/yaypan", "ru": "ru/yaypan" },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Yaypan"]
+      },
+      {
+        "id": 1000437,
+        "key": "vodil",
+        "title": "Vodil",
+        "whereTitle": "Vodilda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.729613, 40.179041]
+        },
+        "webUri": "uz/vodil",
+        "webUriInfo": { "uz": "uz/vodil", "ru": "ru/vuadil" },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Vodil"]
+      },
+      {
+        "id": 1000439,
+        "key": "navbahor",
+        "title": "Navbahor",
+        "whereTitle": "Navbahorda",
+        "location": {
+          "type": "Point",
+          "coordinates": [68.725961, 38.511139]
+        },
+        "webUri": "uz/navbahor",
+        "webUriInfo": {
+          "uz": "uz/navbahor",
+          "ru": "ru/navbakhor"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Navbahor"]
+      },
+      {
+        "id": 1000441,
+        "key": "shohimardon",
+        "title": "Shohimardon",
+        "whereTitle": "Shohimardonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.789378, 39.973449]
+        },
+        "webUri": "uz/shohimardon",
+        "webUriInfo": {
+          "uz": "uz/shohimardon",
+          "ru": "ru/shakhimardan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Shohimardon"]
+      },
+      {
+        "id": 1000443,
+        "key": "yozyovon",
+        "title": "Yozyovon",
+        "whereTitle": "Yozyovonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.74519, 40.65228]
+        },
+        "webUri": "uz/yozyovon",
+        "webUriInfo": {
+          "uz": "uz/yozyovon",
+          "ru": "ru/yazyavan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Yozyovon"]
+      },
+      {
+        "id": 1000445,
+        "key": "yangi-margilon",
+        "title": "Yangi Marg\u02bbilon",
+        "whereTitle": "Yangi Marg\u02bbilonda",
+        "location": {
+          "type": "Point",
+          "coordinates": [71.704299, 40.434382]
+        },
+        "webUri": "uz/yangi-margilon",
+        "webUriInfo": {
+          "uz": "uz/yangi-margilon",
+          "ru": "ru/yangi-margilan"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Farg\u2018ona viloyati", "Yangi Marg\u02bbilon"]
+      }
+    ],
+    "id": 1000401,
+    "key": "fargona-viloyati",
+    "title": "Farg\u2018ona viloyati",
+    "whereTitle": "Farg\u2018ona viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [71.363025, 40.545459]
+    },
+    "webUri": "uz/fargona-viloyati",
+    "webUriInfo": {
+      "uz": "uz/fargona-viloyati",
+      "ru": "ru/ferganskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Farg\u2018ona viloyati"]
+  },
+  {
+    "children": [
+      {
+        "id": 1000449,
+        "key": "urganch",
+        "title": "Urganch",
+        "whereTitle": "Urganchda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.631476, 41.550458]
+        },
+        "webUri": "uz/urganch",
+        "webUriInfo": {
+          "uz": "uz/urganch",
+          "ru": "ru/urgench"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Urganch"]
+      },
+      {
+        "id": 1000451,
+        "key": "bogot",
+        "title": "Bog\u0027ot",
+        "whereTitle": "Bog\u02bbotda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.812199, 41.35347]
+        },
+        "webUri": "uz/bogot",
+        "webUriInfo": { "uz": "uz/bogot", "ru": "ru/bagat" },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Bog\u0027ot"]
+      },
+      {
+        "id": 1000453,
+        "key": "gurlan",
+        "title": "Gurlan",
+        "whereTitle": "Gurlanda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.394051, 41.839662]
+        },
+        "webUri": "uz/gurlan",
+        "webUriInfo": { "uz": "uz/gurlan", "ru": "ru/gurlen" },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Gurlan"]
+      },
+      {
+        "id": 1000455,
+        "key": "pitnak",
+        "title": "Pitnak",
+        "whereTitle": "Pitnakda",
+        "location": {
+          "type": "Point",
+          "coordinates": [61.316549, 41.219322]
+        },
+        "webUri": "uz/pitnak",
+        "webUriInfo": { "uz": "uz/pitnak", "ru": "ru/pitnak" },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Pitnak"]
+      },
+      {
+        "id": 1000457,
+        "key": "xonqa",
+        "title": "Xonqa",
+        "whereTitle": "Xonqada",
+        "location": {
+          "type": "Point",
+          "coordinates": [132.369218, 44.909094]
+        },
+        "webUri": "uz/xonqa",
+        "webUriInfo": { "uz": "uz/xonqa", "ru": "ru/khanka" },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Xonqa"]
+      },
+      {
+        "id": 1000459,
+        "key": "xiva",
+        "title": "Xiva",
+        "whereTitle": "Xivada",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.361864, 41.384443]
+        },
+        "webUri": "uz/xiva",
+        "webUriInfo": { "uz": "uz/xiva", "ru": "ru/khiva" },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Xiva"]
+      },
+      {
+        "id": 1000461,
+        "key": "qoshkopir",
+        "title": "Qo\u02bbshko\u02bbpir",
+        "whereTitle": "Qo\u02bbshko\u02bbpirda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.348713, 41.53013]
+        },
+        "webUri": "uz/qoshkopir",
+        "webUriInfo": {
+          "uz": "uz/qoshkopir",
+          "ru": "ru/koshkupyr"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Qo\u02bbshko\u02bbpir"]
+      },
+      {
+        "id": 1000463,
+        "key": "qorovul",
+        "title": "Qorovul",
+        "whereTitle": "Qorovulda",
+        "location": {
+          "type": "Point",
+          "coordinates": [83.922446, 70.953088]
+        },
+        "webUri": "uz/qorovul",
+        "webUriInfo": { "uz": "uz/qorovul", "ru": "ru/karaul" },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Qorovul"]
+      },
+      {
+        "id": 1000465,
+        "key": "cholish",
+        "title": "Cholish",
+        "whereTitle": "Cholishda",
+        "location": {
+          "type": "Point",
+          "coordinates": [32.710319, 39.373899]
+        },
+        "webUri": "uz/cholish",
+        "webUriInfo": {
+          "uz": "uz/cholish",
+          "ru": "ru/chalysh"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Cholish"]
+      },
+      {
+        "id": 1000467,
+        "key": "xozarasp",
+        "title": "Xozarasp",
+        "whereTitle": "Xozaraspda",
+        "location": {
+          "type": "Point",
+          "coordinates": [61.088646, 41.311449]
+        },
+        "webUri": "uz/xozarasp",
+        "webUriInfo": {
+          "uz": "uz/xozarasp",
+          "ru": "ru/khazarasp"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Xozarasp"]
+      },
+      {
+        "id": 1000469,
+        "key": "shovot",
+        "title": "Shovot",
+        "whereTitle": "Shovotda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.293808, 41.657199]
+        },
+        "webUri": "uz/shovot",
+        "webUriInfo": { "uz": "uz/shovot", "ru": "ru/shavat" },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Shovot"]
+      },
+      {
+        "id": 1000471,
+        "key": "yangiariq",
+        "title": "Yangiariq",
+        "whereTitle": "Yangiariqda",
+        "location": {
+          "type": "Point",
+          "coordinates": [60.608946, 41.364075]
+        },
+        "webUri": "uz/yangiariq",
+        "webUriInfo": {
+          "uz": "uz/yangiariq",
+          "ru": "ru/yangiaryk"
+        },
+        "isWholeCountry": false,
+        "titlePath": ["Xorazm viloyati", "Yangiariq"]
+      }
+    ],
+    "id": 1000447,
+    "key": "xorazm-viloyati",
+    "title": "Xorazm viloyati",
+    "whereTitle": "Xorazm viloyatida",
+    "location": {
+      "type": "Point",
+      "coordinates": [60.851576, 41.460476]
+    },
+    "webUri": "uz/xorazm-viloyati",
+    "webUriInfo": {
+      "uz": "uz/xorazm-viloyati",
+      "ru": "ru/khorezmskaya-oblast"
+    },
+    "isWholeCountry": false,
+    "titlePath": ["Xorazm viloyati"]
+  }
+]

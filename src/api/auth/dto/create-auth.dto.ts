@@ -17,7 +17,7 @@ export class CreateAuthDto {
   @IsOptional()
   photo?: string;
 
-  @IsEnum(['google', 'telegram', 'facebook'])
+  @IsEnum(['telegram'])
   social_network_account_type: string;
 
   @IsString()

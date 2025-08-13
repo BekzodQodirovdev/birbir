@@ -224,6 +224,7 @@ export class UserService {
     Object.assign(user, {
       ...applicationDto,
       professional_application_status: 'pending',
+      application_submitted_at: new Date(),
     });
 
     return await this.repository.save(user);
@@ -294,5 +295,165 @@ export class UserService {
       where: { professional_application_status: 'pending' },
       relations: ['products'],
     });
+  }
+
+  // Professional applicationni tasdiqlash (admin uchun)
+  async approveProfessionalApplication(
+    userId: string,
+    adminId: string,
+  ): Promise<User> {
+    const user = await this.findOne(userId);
+
+    // Ariza mavjudligini tekshirish
+    if (!user.professional_application_status) {
+      throw new BadRequestException('No application found for this user');
+    }
+
+    // Ariza pending holatda ekanligini tekshirish
+    if (user.professional_application_status !== 'pending') {
+      throw new BadRequestException('Application is not in pending status');
+    }
+
+    // Foydalanuvchini professional seller qilish
+    user.is_professional_seller = true;
+    user.professional_application_status = 'approved';
+    user.application_reviewed_at = new Date();
+    user.application_reviewed_by_id = adminId;
+
+    return await this.repository.save(user);
+  }
+
+  // Professional applicationni rad etish (admin uchun)
+  async rejectProfessionalApplication(
+    userId: string,
+    adminId: string,
+    rejectionReason: string,
+  ): Promise<User> {
+    const user = await this.findOne(userId);
+
+    // Ariza mavjudligini tekshirish
+    if (!user.professional_application_status) {
+      throw new BadRequestException('No application found for this user');
+    }
+
+    // Ariza pending holatda ekanligini tekshirish
+    if (user.professional_application_status !== 'pending') {
+      throw new BadRequestException('Application is not in pending status');
+    }
+
+    // Arizani rad etish
+    user.professional_application_status = 'rejected';
+    user.application_reviewed_at = new Date();
+    user.application_reviewed_by_id = adminId;
+    user.application_rejection_reason = rejectionReason;
+
+    return await this.repository.save(user);
+  }
+
+  // Get user engagement analytics
+  async getUserEngagementAnalytics(userId: string): Promise<any> {
+    const user = await this.findOne(userId);
+
+    return {
+      user_id: user.id,
+      user_name: user.name,
+      total_ads: user.total_ads,
+      total_shares: user.total_shares,
+      total_comments: user.total_comments,
+      total_reports: user.total_reports,
+      subscribers_count: user.subscribers_count,
+      ratings_count: user.ratings_count,
+      average_rating: user.average_rating,
+    };
+  }
+
+  // Report a user
+  async reportUser(
+    userId: string,
+    reporterId: string,
+    reason: string,
+    description: string,
+  ): Promise<any> {
+    const user = await this.findOne(userId);
+    
+    // Increment the user's report count
+    user.total_reports = (user.total_reports || 0) + 1;
+    await this.repository.save(user);
+    
+    // In a real implementation, you would save the report to a separate table
+    // For now, we'll just return a success message
+    return { message: 'User reported successfully' };
+  }
+
+  // Get all user reports (moderator)
+  async getAllUserReports(paginationDto: any): Promise<any> {
+    // In a real implementation, you would query a reports table
+    // For now, we'll return a placeholder
+    return {
+      data: [],
+      pagination: {
+        page: paginationDto.page || 1,
+        limit: paginationDto.limit || 10,
+        total: 0,
+        totalPages: 0,
+        hasNext: false,
+        hasPrev: false,
+      },
+    };
+  }
+
+  // Ban a user (moderator)
+  async banUser(
+    userId: string,
+    moderatorId: string,
+    reason: string,
+    duration?: number,
+  ): Promise<User> {
+    const user = await this.findOne(userId);
+    
+    // Set user status to suspended
+    user.status = 'suspended';
+    
+    // Set ban expiration if duration is provided
+    if (duration) {
+      const banExpiresAt = new Date();
+      banExpiresAt.setDate(banExpiresAt.getDate() + duration);
+      // In a real implementation, you would save this to a bans table
+    }
+    
+    // Save the reason for banning
+    user.application_rejection_reason = reason;
+    
+    return await this.repository.save(user);
+  }
+
+  // Unban a user (moderator)
+  async unbanUser(userId: string, moderatorId: string): Promise<User> {
+    const user = await this.findOne(userId);
+    
+    // Set user status back to active
+    user.status = 'active';
+    
+    // Clear the ban reason
+    user.application_rejection_reason = '';
+    
+    return await this.repository.save(user);
+  }
+
+  // Get reports for a specific user (moderator)
+  async getUserReports(userId: string, paginationDto: any): Promise<any> {
+    // In a real implementation, you would query a reports table for reports about this user
+    // For now, we'll return a placeholder
+    return {
+      data: [],
+      pagination: {
+        page: paginationDto.page || 1,
+        limit: paginationDto.limit || 10,
+        total: 0,
+        totalPages: 0,
+        hasNext: false,
+        hasPrev: false,
+      },
+    };
   }
 }

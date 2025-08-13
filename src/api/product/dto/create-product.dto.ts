@@ -8,6 +8,8 @@ import {
   IsEnum,
   IsLatitude,
   IsLongitude,
+  IsInt,
+  IsUUID,
 } from 'class-validator';
 
 export class CreateProductDto {
@@ -93,4 +95,97 @@ export class CreateProductDto {
   @IsOptional()
   @IsBoolean()
   is_active?: boolean;
+
+  @ApiProperty({ description: 'Product slug for URL', required: false })
+  @IsOptional()
+  @IsString()
+  slug?: string;
+
+  // Draft/Published status tracking
+  @ApiProperty({ description: 'Product status code', required: false })
+  @IsOptional()
+  @IsInt()
+  status?: number;
+
+  @ApiProperty({ description: 'Product tab/status', required: false })
+  @IsOptional()
+  @IsString()
+  tab?: string;
+
+  @ApiProperty({ description: 'Product expiration date', required: false })
+  @IsOptional()
+  @IsString()
+  should_expired_at?: string;
+
+  @ApiProperty({ description: 'Product first published date', required: false })
+  @IsOptional()
+  @IsString()
+  first_published_at?: string;
+
+  @ApiProperty({ description: 'Is product publishable', required: false })
+  @IsOptional()
+  @IsBoolean()
+  publishable?: boolean;
+
+  // Validation issues tracking
+  @ApiProperty({ description: 'Product validation issues', required: false })
+  @IsOptional()
+  @IsString()
+  issues?: string;
+
+  // Additional metadata
+  @ApiProperty({ description: 'Product UUID', required: false })
+  @IsOptional()
+  @IsUUID()
+  uuid?: string;
+
+  @ApiProperty({ description: 'Product web URI', required: false })
+  @IsOptional()
+  @IsString()
+  web_uri?: string;
+
+  @ApiProperty({ description: 'Product payload', required: false })
+  @IsOptional()
+  @IsString()
+  payload?: string;
+
+  @ApiProperty({ description: 'Product promotion data', required: false })
+  @IsOptional()
+  @IsString()
+  promotion_data?: string;
+
+  @ApiProperty({ description: 'Product statistics', required: false })
+  @IsOptional()
+  @IsString()
+  statistics?: string;
+
+  @ApiProperty({ description: 'Product top notice', required: false })
+  @IsOptional()
+  @IsString()
+  notice_top?: string;
+
+  @ApiProperty({ description: 'Product bottom notice', required: false })
+  @IsOptional()
+  @IsString()
+  notice_bottom?: string;
+
+  @ApiProperty({ description: 'Is delivery enabled', required: false })
+  @IsOptional()
+  @IsBoolean()
+  delivery_enabled?: boolean;
+
+  @ApiProperty({ description: 'Product gross price', required: false })
+  @IsOptional()
+  @IsNumber()
+  gross_price?: number;
+
+  @ApiProperty({ description: 'Product gross price discount', required: false })
+  @IsOptional()
+  @IsNumber()
+  gross_price_discount?: number;
+
+  @ApiProperty({ description: 'Product badges', required: false })
+  @IsOptional()
+  @IsString()
+  badges?: string;
 }

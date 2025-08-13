@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { JwtModule } from '@nestjs/jwt';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { User } from 'src/core/entity/user.entity';
-import { GoogleStrategy } from './strategy/google.strategy';
-import { FacebookStrategy } from './strategy/facebook.strategy';
 import { config } from 'src/config';
 import { TelegramAuthGuard } from 'src/common/guard/telegram.guard';
+import { TelegramVerificationService } from 'src/common/service/telegram-verification.service';
+import { BcryptManage } from 'src/infrastructure/lib/bcrypt';
 
 @Module({
   imports: [
@@ -20,7 +20,13 @@ import { TelegramAuthGuard } from 'src/common/guard/telegram.guard';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, GoogleStrategy, FacebookStrategy, TelegramAuthGuard],
-  exports: [AuthService, JwtModule],
+  providers: [
+    AuthService,
+    TelegramAuthGuard,
+    TelegramVerificationService,
+    BcryptManage,
+    JwtService,
+  ],
+  exports: [AuthService, JwtModule, JwtService, TelegramVerificationService],
 })
 export class AuthModule {}
