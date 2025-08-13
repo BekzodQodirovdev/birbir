@@ -24,9 +24,12 @@ export class TelegramAuthService {
    * Create a new Telegram authentication session
    * @returns sessionToken
    */
+  // telegram-auth.service.ts
   async createSession(): Promise<string> {
     const sessionToken = uuidv4();
-    const expiresAt = new Date(Date.now() + 2 * 60 * 1000); // 2 minutes from now
+    const expiresAt = new Date(Date.now() + 2 * 60 * 1000); // 2 minutes
+
+    this.logger.log(`Creating new session with token: ${sessionToken}`);
 
     const session = this.sessionRepository.create({
       sessionToken,
@@ -36,7 +39,6 @@ export class TelegramAuthService {
     });
 
     await this.sessionRepository.save(session);
-    this.logger.log(`Created new Telegram session: ${sessionToken}`);
     return sessionToken;
   }
 
@@ -89,7 +91,10 @@ export class TelegramAuthService {
       const session = await this.validateSession(sessionToken);
       if (!session) {
         // Send error via WebSocket
-        this.websocketGateway.sendAuthError(sessionToken, 'Invalid or expired session token');
+        this.websocketGateway.sendAuthError(
+          sessionToken,
+          'Invalid or expired session token',
+        );
         throw new UnauthorizedException('Invalid or expired session token');
       }
 
@@ -120,6 +125,7 @@ export class TelegramAuthService {
           first_name: userData.name,
           username: userData.username,
           photo_url: userData.photo,
+          phone_number: userData.phone,
         };
 
         const result = await this.authService.socialLogin(createAuthDto);
@@ -143,7 +149,10 @@ export class TelegramAuthService {
     } catch (error) {
       this.logger.error('Error completing Telegram authentication', error);
       // Send error via WebSocket
-      this.websocketGateway.sendAuthError(sessionToken, error.message || 'Authentication failed');
+      this.websocketGateway.sendAuthError(
+        sessionToken,
+        error.message || 'Authentication failed',
+      );
       throw error;
     }
   }

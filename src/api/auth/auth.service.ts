@@ -11,14 +11,31 @@ import { CreateAuthDto } from './dto/create-auth.dto';
 import { v4 as uuidv4 } from 'uuid';
 import { config } from 'src/config';
 import { BcryptManage } from 'src/infrastructure/lib/bcrypt';
+import { randomBytes } from 'crypto';
+import { TelegramSession } from './telegram-session.entity';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
+    @InjectRepository(TelegramSession)
+    private readonly sessionRepository: Repository<TelegramSession>,
     private readonly jwtService: JwtService,
     private readonly bcryptManage: BcryptManage,
   ) {}
+
+  private sessionStore = new Map<string, any>(); // sessionToken -> JWT yoki user data
+
+  saveUserSession(sessionToken: string, jwt: string) {
+    if (this.sessionStore.has(sessionToken)) {
+      this.sessionStore.set(sessionToken, { jwt });
+    }
+  }
+
+  getJWTBySession(sessionToken: string) {
+    const data = this.sessionStore.get(sessionToken);
+    return data?.jwt;
+  }
 
   async socialLogin(data: CreateAuthDto): Promise<any> {
     try {

@@ -27,8 +27,8 @@ import { TelegramAuthModule } from './auth/telegram-auth.module';
       password: config.DB_PASS,
       database: config.DB_NAME,
       autoLoadEntities: true,
-      synchronize: true,
-      // dropSchema: true,
+      synchronize: false, // true for development
+      migrationsRun: true, // delete for production
       entities: ['dist/core/entity/*.entity{.ts,.js}'],
     }),
     AuthModule,

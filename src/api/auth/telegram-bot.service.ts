@@ -160,4 +160,61 @@ export class TelegramBotService {
   public getBot(): Telegraf {
     return this.bot;
   }
+
+  // telegram-bot.service.ts
+  private async handleContact(ctx: any, sessionToken: string) {
+    try {
+      const contact = ctx.message.contact;
+      const userData = {
+        sessionToken,
+        name:
+          contact.first_name +
+          (contact.last_name ? ` ${contact.last_name}` : ''),
+        phone: contact.phone_number,
+        telegramId: contact.user_id?.toString() || ctx.from?.id?.toString(),
+        username: ctx.from?.username || '',
+        photo: await this.getUserPhoto(ctx),
+      };
+
+      const response = await firstValueFrom(
+        this.httpService.post(
+          `${config.DOMAIN}/api/auth/telegram/complete`,
+          userData,
+        ),
+      );
+
+      if (ctx.from?.id) {
+        this.userSessions.delete(ctx.from.id);
+      }
+
+      if (response.data?.status === 'success') {
+        await ctx.reply('Authentication successful!');
+      } else {
+        await ctx.reply('Authentication failed. Please try again.');
+      }
+    } catch (error) {
+      this.logger.error('Error processing contact', error);
+      await ctx.reply('An error occurred. Please try again.');
+    }
+  }
+  private async getUserPhoto(ctx: any): Promise<string> {
+    let photoUrl = '';
+    if (ctx.from) {
+      try {
+        const photos = await ctx.telegram.getUserProfilePhotos(
+          ctx.from.id,
+          0,
+          1,
+        );
+        if (photos.photos.length > 0 && photos.photos[0].length > 0) {
+          const fileId = photos.photos[0][0].file_id;
+          const fileLink = await ctx.telegram.getFileLink(fileId);
+          photoUrl = fileLink.toString();
+        }
+      } catch (photoError) {
+        this.logger.warn('Could not fetch user profile photo', photoError);
+      }
+    }
+    return photoUrl;
+  }
 }

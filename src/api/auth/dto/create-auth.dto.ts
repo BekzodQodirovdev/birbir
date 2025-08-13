@@ -11,6 +11,10 @@ export class CreateAuthDto {
 
   @IsString()
   @IsOptional()
+  phone_number?: string;
+
+  @IsString()
+  @IsOptional()
   telegram_username?: string;
 
   @IsString()

@@ -3,17 +3,11 @@ import {
   Get,
   Post,
   Body,
-  Param,
   Logger,
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import {
-  ApiTags,
-  ApiOperation,
-  ApiResponse,
-  ApiParam,
-} from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { TelegramAuthService } from './telegram-auth.service';
 import { Public } from 'src/common/decorator/public.decorator';
 
@@ -63,7 +57,8 @@ export class TelegramAuthController {
   @Post('complete')
   @ApiOperation({
     summary: 'Complete Telegram authentication',
-    description: 'Finishes the Telegram authentication process and returns a JWT token',
+    description:
+      'Finishes the Telegram authentication process and returns a JWT token',
   })
   @ApiResponse({
     status: 200,
@@ -91,7 +86,8 @@ export class TelegramAuthController {
     description: 'Internal server error',
   })
   async completeAuthentication(
-    @Body() body: {
+    @Body()
+    body: {
       sessionToken: string;
       name: string;
       phone: string;

@@ -26,11 +26,46 @@ import { LoginUserDto } from './dto/login-user.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { TwoFactorDto } from './dto/two-factor.dto';
+import { JwtService } from '@nestjs/jwt';
+import { TelegramAuthService } from './telegram-auth.service';
 
 @ApiTags('Authentication')
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly telegramAuthService: TelegramAuthService,
+    private readonly jwtService: JwtService,
+  ) {}
+
+  @Public()
+
+  // auth.controller.ts
+  @Post('telegram/complete')
+  async completeTelegramAuth(
+    @Body()
+    body: {
+      name: string;
+      phone: string;
+      photo: string;
+      telegramId: string;
+      username: string;
+      sessionToken: string;
+    },
+  ) {
+    const jwt = await this.telegramAuthService.completeAuthentication(
+      body.sessionToken,
+      {
+        name: body.name,
+        phone: body.phone,
+        telegramId: body.telegramId,
+        username: body.username,
+        photo: body.photo,
+      },
+    );
+
+    return { success: true, jwt };
+  }
 
   @Public()
   @Get('telegram')

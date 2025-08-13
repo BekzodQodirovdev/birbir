@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
@@ -21,13 +21,13 @@ import { TelegramBotService } from './telegram-bot.service';
       signOptions: { expiresIn: config.ACCESS_TOKEN_TIME },
     }),
     HttpModule,
-    AuthModule,
+    forwardRef(() => AuthModule),
   ],
   controllers: [TelegramAuthController],
   providers: [
     TelegramAuthService,
     TelegramWebsocketGateway,
-    TelegramBotService
+    TelegramBotService,
   ],
   exports: [TelegramAuthService, TelegramWebsocketGateway, TelegramBotService],
 })

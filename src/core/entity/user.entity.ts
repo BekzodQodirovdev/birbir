@@ -3,44 +3,30 @@ import { Column, Entity, OneToMany, Index, ManyToOne } from 'typeorm';
 import { Product } from './product.entity';
 import { Region } from './region.entity';
 
-/**
- * User Entity
- * Represents a user in the system with all related information
- */
 @Entity()
 @Index(['email'], { unique: true })
 @Index(['phone_number'], { unique: true })
 @Index(['telegram_id'], { unique: true })
 export class User extends BaseModel {
-  // ==================== Basic Information ====================
-  
-  /** User's full name */
   @Column({ type: 'varchar', length: 100 })
   name: string;
 
-  /** User's phone number (unique) */
   @Column({ type: 'varchar', length: 20, unique: true, nullable: true })
   phone_number: string;
 
-  /** User's email address (unique) */
   @Column({ type: 'varchar', length: 100, unique: true, nullable: true })
   email: string;
 
-  /** User's password (hashed) */
   @Column({ type: 'varchar', length: 255, nullable: true })
   password: string;
 
-  /** User's bio/description */
   @Column({ type: 'text', nullable: true })
   about: string;
 
-  // ==================== Role and Status ====================
-  
-  /** User's role in the system */
-  @Column({ 
-    type: 'enum', 
-    enum: ['user', 'admin', 'moderator'], 
-    default: 'user' 
+  @Column({
+    type: 'enum',
+    enum: ['user', 'admin', 'moderator'],
+    default: 'user',
   })
   role: string;
 
@@ -57,7 +43,7 @@ export class User extends BaseModel {
   last_active: Date;
 
   // ==================== Profile Images ====================
-  
+
   /** URL to user's profile photo */
   @Column({ type: 'varchar', length: 255, nullable: true })
   photo: string;
@@ -75,7 +61,7 @@ export class User extends BaseModel {
   logo: string;
 
   // ==================== Business Information ====================
-  
+
   /** Whether the user is a professional seller */
   @Column({ type: 'boolean', default: false })
   is_professional_seller: boolean;
@@ -137,7 +123,7 @@ export class User extends BaseModel {
   application_rejection_reason: string;
 
   // ==================== Statistics ====================
-  
+
   /** Total number of ads posted by the user */
   @Column({ type: 'int', default: 0 })
   total_ads: number;
@@ -168,7 +154,7 @@ export class User extends BaseModel {
   total_reports: number;
 
   // ==================== Contact Preferences ====================
-  
+
   /** Whether chat is enabled for the user */
   @Column({ type: 'boolean', default: true })
   chat_enabled: boolean;
@@ -186,7 +172,7 @@ export class User extends BaseModel {
   telegram_username: string;
 
   // ==================== Social and Business Settings ====================
-  
+
   /** Whether other ads are enabled for the user */
   @Column({ type: 'boolean', default: true })
   other_ads_enabled: boolean;
@@ -220,7 +206,7 @@ export class User extends BaseModel {
   status: string;
 
   // ==================== Social Network Integration ====================
-  
+
   /** Type of social network account used for login */
   @Column({ type: 'varchar', length: 50, nullable: true })
   social_network_account_type: string; // 'telegram'
@@ -230,7 +216,7 @@ export class User extends BaseModel {
   social_network_id: string;
 
   // ==================== Authentication Fields ====================
-  
+
   /** Whether email is verified */
   @Column({ type: 'boolean', default: false })
   email_verified: boolean;
@@ -268,7 +254,7 @@ export class User extends BaseModel {
   locked_until: Date;
 
   // ==================== Relationships ====================
-  
+
   /** User's selected region */
   @ManyToOne(() => Region, (region) => region.users, { nullable: true })
   region: Region;

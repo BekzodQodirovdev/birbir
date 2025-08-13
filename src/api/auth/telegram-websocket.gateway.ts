@@ -14,7 +14,9 @@ import { Server, Socket } from 'socket.io';
     credentials: true,
   },
 })
-export class TelegramWebsocketGateway implements OnGatewayConnection, OnGatewayDisconnect {
+export class TelegramWebsocketGateway
+  implements OnGatewayConnection, OnGatewayDisconnect
+{
   @WebSocketServer()
   server: Server;
 
@@ -27,7 +29,7 @@ export class TelegramWebsocketGateway implements OnGatewayConnection, OnGatewayD
 
   handleDisconnect(client: Socket): void {
     this.logger.log(`Client disconnected: ${client.id}`);
-    
+
     // Remove session mapping when client disconnects
     for (const [sessionToken, socketId] of this.sessions.entries()) {
       if (socketId === client.id) {
