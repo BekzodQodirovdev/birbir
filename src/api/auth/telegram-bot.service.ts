@@ -122,8 +122,11 @@ export class TelegramBotService {
         if (ctx.from?.id) {
           this.userSessions.delete(ctx.from.id);
         }
-
-        if (response.data && response.data.status === 'success') {
+        console.log('+++', response.status);
+        if (
+          response.data &&
+          (response.status === 201 || response.status === 200)
+        ) {
           await ctx.reply(
             'Authentication successful! You can now close this chat and return to the website.',
           );

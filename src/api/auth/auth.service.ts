@@ -67,6 +67,7 @@ export class AuthService {
           social_network_account_type: data?.social_network_account_type,
           telegram_id: data?.telegram_id || null,
           is_active: true,
+          phone_number: data?.phone_number || null,
         } as DeepPartial<User>);
 
         await this.userRepository.save(user);
@@ -131,6 +132,7 @@ export class AuthService {
         social_network_account_type: 'telegram',
         social_network_id: user.id,
         is_active: true,
+        phone_number: user.phone_number || null,
       } as DeepPartial<User>);
       await this.userRepository.save(currentUser);
     }
