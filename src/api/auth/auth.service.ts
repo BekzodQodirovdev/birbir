@@ -116,7 +116,13 @@ export class AuthService {
     return await this.userRepository.save(user);
   }
 
-  async generateJwtTelegram(user: any) {
+  async generateJwtTelegram(user: {
+    id: string;
+    first_name: string;
+    username: string;
+    photo_url: string;
+    phone_number?: string;
+  }) {
     // Check if user already exists
     let currentUser = await this.userRepository.findOne({
       where: { telegram_id: user.id },
@@ -147,7 +153,12 @@ export class AuthService {
     );
   }
 
-  async registerUser(data: any): Promise<any> {
+  async registerUser(data: {
+    name: string;
+    email: string;
+    password: string;
+    phone_number?: string;
+  }): Promise<any> {
     // Check if user already exists
     const existingUser = await this.userRepository.findOne({
       where: { email: data.email },
@@ -175,7 +186,7 @@ export class AuthService {
     await this.userRepository.save(user);
 
     // Generate email verification token
-    const verificationToken = uuidv4();
+    // const verificationToken = uuidv4();
     // In a real implementation, you would save this token and send an email
 
     // Generate JWT token
@@ -304,17 +315,6 @@ export class AuthService {
     await this.userRepository.save(user);
   }
 
-  async verifyEmail(token: string): Promise<void> {
-    // In a real implementation, you would verify the email verification token
-    // For now, we'll just set email_verified to true for the user
-    // const user = await this.userRepository.findOne({ where: { email_verification_token: token } });
-    // if (user) {
-    //   user.email_verified = true;
-    //   user.email_verification_token = null;
-    //   await this.userRepository.save(user);
-    // }
-  }
-
   async enableTwoFactor(userId: string): Promise<any> {
     const user = await this.findUserById(userId);
 
@@ -337,32 +337,32 @@ export class AuthService {
     await this.userRepository.save(user);
   }
 
-  async verifyTwoFactor(userId: string, token: string): Promise<boolean> {
-    const user = await this.findUserById(userId);
+  // async verifyTwoFactor(userId: string, token: string): Promise<boolean> {
+  //   const user = await this.findUserById(userId);
 
-    if (!user.two_factor_enabled || !user.two_factor_secret) {
-      return false;
-    }
+  //   if (!user.two_factor_enabled || !user.two_factor_secret) {
+  //     return false;
+  //   }
 
-    // In a real implementation, you would verify the token using the secret
-    // For now, we'll just return true
-    // return verifyToken(user.two_factor_secret, token);
-    return true;
-  }
+  //   // In a real implementation, you would verify the token using the secret
+  //   // For now, we'll just return true
+  //   // return verifyToken(user.two_factor_secret, token);
+  //   return true;
+  // }
 
-  async getActiveSessions(userId: string): Promise<any[]> {
-    // In a real implementation, you would retrieve active sessions from a session store
-    // For now, we'll return a placeholder
-    return [];
-  }
+  // async getActiveSessions(userId: string): Promise<any[]> {
+  //   // In a real implementation, you would retrieve active sessions from a session store
+  //   // For now, we'll return a placeholder
+  //   return [];
+  // }
 
-  async logoutFromSession(userId: string, sessionId: string): Promise<void> {
-    // In a real implementation, you would invalidate the specific session
-    // For now, this is a placeholder
-  }
+  // async logoutFromSession(userId: string, sessionId: string): Promise<void> {
+  //   // In a real implementation, you would invalidate the specific session
+  //   // For now, this is a placeholder
+  // }
 
-  async logoutFromAllSessions(userId: string): Promise<void> {
-    // In a real implementation, you would invalidate all sessions for the user
-    // For now, this is a placeholder
-  }
+  // async logoutFromAllSessions(userId: string): Promise<void> {
+  //   // In a real implementation, you would invalidate all sessions for the user
+  //   // For now, this is a placeholder
+  // }
 }

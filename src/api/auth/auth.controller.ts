@@ -7,7 +7,6 @@ import {
   UseGuards,
   Res,
   Req,
-  BadRequestException,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -21,11 +20,6 @@ import { JwtAuthGuard } from 'src/common/guard/jwt-auth.guard';
 import { config } from 'src/config';
 import { Public } from 'src/common/decorator/public.decorator';
 import { TelegramAuthGuard } from 'src/common/guard/telegram.guard';
-import { RegisterUserDto } from './dto/register-user.dto';
-import { LoginUserDto } from './dto/login-user.dto';
-import { ForgotPasswordDto } from './dto/forgot-password.dto';
-import { ResetPasswordDto } from './dto/reset-password.dto';
-import { TwoFactorDto } from './dto/two-factor.dto';
 import { JwtService } from '@nestjs/jwt';
 import { TelegramAuthService } from './telegram-auth.service';
 
@@ -85,18 +79,29 @@ export class AuthController {
   @Post('telegram')
   @UseGuards(TelegramAuthGuard)
   async telegramLoginPost(@Req() req: ERequest, @Res() res: Response) {
-    const user = req.user as any;
+    const user = req.user as {
+      id: string;
+      first_name: string;
+      username: string;
+      photo_url: string;
+    };
 
     try {
       // Process Telegram login and generate JWT token
-      const result = await this.authService.socialLogin({
+      const result = (await this.authService.socialLogin({
         social_network_account_type: 'telegram',
         social_network_id: user.id,
         name: user.first_name,
         telegram_username: user.username,
         photo: user.photo_url,
         telegram_id: user.id,
-      });
+      })) as {
+        access_token: string;
+        id: string;
+        name: string;
+        telegram_username: string;
+        photo: string;
+      };
 
       return res.json({
         success: true,
@@ -131,7 +136,7 @@ export class AuthController {
     status: 401,
     description: 'Unauthorized - Invalid or missing token',
   })
-  async getProfile(@Request() req: any) {
+  async getProfile(@Request() req: { user: { sub: string } }) {
     return this.authService.findUserById(req.user.sub);
   }
 

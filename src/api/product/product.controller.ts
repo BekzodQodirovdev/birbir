@@ -506,7 +506,10 @@ export class ProductController {
 
   @Post(':id/submit-for-review')
   @ApiOperation({ summary: 'Submit a product for review' })
-  @ApiResponse({ status: 200, description: 'Product submitted for review successfully' })
+  @ApiResponse({
+    status: 200,
+    description: 'Product submitted for review successfully',
+  })
   @ApiResponse({ status: 400, description: 'Product is not publishable' })
   @ApiResponse({ status: 404, description: 'Product not found' })
   submitForReview(@Param('id') id: string) {
@@ -518,10 +521,7 @@ export class ProductController {
   @ApiOperation({ summary: 'Approve a product (moderator)' })
   @ApiResponse({ status: 200, description: 'Product approved successfully' })
   @ApiResponse({ status: 404, description: 'Product not found' })
-  approveProduct(
-    @Param('id') id: string,
-    @Request() req: RequestWithUser,
-  ) {
+  approveProduct(@Param('id') id: string, @Request() req: RequestWithUser) {
     return this.productService.approveProduct(id, req.user.sub);
   }
 
@@ -576,16 +576,16 @@ export class ProductController {
   @ApiResponse({ status: 200, description: 'Promotion extended successfully' })
   @ApiResponse({ status: 400, description: 'Product is not promoted' })
   @ApiResponse({ status: 404, description: 'Product not found' })
-  extendPromotion(
-    @Param('id') id: string,
-    @Body() body: { days: number },
-  ) {
+  extendPromotion(@Param('id') id: string, @Body() body: { days: number }) {
     return this.productService.extendPromotion(id, body.days);
   }
 
   @Post(':id/promotion/reactivate')
   @ApiOperation({ summary: 'Reactivate expired promotion' })
-  @ApiResponse({ status: 200, description: 'Promotion reactivated successfully' })
+  @ApiResponse({
+    status: 200,
+    description: 'Promotion reactivated successfully',
+  })
   @ApiResponse({ status: 400, description: 'Product has no promotion history' })
   @ApiResponse({ status: 404, description: 'Product not found' })
   reactivatePromotion(@Param('id') id: string) {
