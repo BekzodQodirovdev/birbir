@@ -10,6 +10,7 @@ import {
   IsLongitude,
   IsInt,
 } from 'class-validator';
+import { Transform, TransformFnParams } from 'class-transformer';
 
 export class CreateProductDto {
   @ApiProperty({ description: 'Product name' })
@@ -109,12 +110,22 @@ export class CreateProductDto {
   @ApiProperty({ description: 'Product expiration date', required: false })
   @IsOptional()
   @IsString()
-  should_expired_at?: string;
+  @Transform(({ value }: TransformFnParams) => {
+    if (!value || value === 'string' || value === '') return null;
+    const date = new Date(value);
+    return isNaN(date.getTime()) ? null : value;
+  })
+  should_expired_at?: string | null;
 
   @ApiProperty({ description: 'Product first published date', required: false })
   @IsOptional()
   @IsString()
-  first_published_at?: string;
+  @Transform(({ value }: TransformFnParams) => {
+    if (!value || value === 'string' || value === '') return null;
+    const date = new Date(value);
+    return isNaN(date.getTime()) ? null : value;
+  })
+  first_published_at?: string | null;
 
   @ApiProperty({ description: 'Is product publishable', required: false })
   @IsOptional()

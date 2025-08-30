@@ -226,5 +226,5 @@ export class Product extends BaseModel {
   created_by_id: string;
 
   @OneToMany(() => ProductImage, (image) => image.product, { cascade: true })
-  images: ProductImage[];
+  images: ProductImage[] | null;
 }

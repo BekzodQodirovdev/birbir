@@ -11,6 +11,7 @@ import {
   Query,
   UseInterceptors,
   UploadedFiles,
+  BadRequestException,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -56,7 +57,17 @@ export class ProductController {
     @Body() createProductDto: CreateProductDto,
     @Request() req: RequestWithUser,
   ) {
-    return this.productService.create(createProductDto, req.user.sub);
+    try {
+      // Validate user authentication
+      if (!req.user || !req.user.sub) {
+        throw new BadRequestException('User not authenticated');
+      }
+
+      return this.productService.create(createProductDto, req.user.sub);
+    } catch (error) {
+      console.error('Error in product creation:', error);
+      throw error;
+    }
   }
 
   @Get()
@@ -279,10 +290,38 @@ export class ProductController {
   @ApiResponse({ status: 404, description: 'Product not found' })
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FilesInterceptor('images', 6))
-  uploadImages(
+  async uploadImages(
     @Param('id') id: string,
     @UploadedFiles() files: Express.Multer.File[],
   ) {
+    // Additional validation in controller
+    if (!files || files.length === 0) {
+      throw new BadRequestException('No files uploaded');
+    }
+
+    // Check existing images count
+    const existingImages = await this.productService.getProductImagesCount(id);
+    const totalImages = existingImages + files.length;
+
+    if (totalImages > 6) {
+      throw new BadRequestException(
+        `Cannot upload ${files.length} images. Product already has ${existingImages} images. Maximum 6 images allowed per product.`
+      );
+    }
+
+    // Validate file types
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    for (const file of files) {
+      if (!allowedTypes.includes(file.mimetype)) {
+        throw new BadRequestException(`Invalid file type: ${file.mimetype}. Only JPEG, PNG, and WebP are allowed.`);
+      }
+
+      // Check file size (10MB limit)
+      if (file.size > 10 * 1024 * 1024) {
+        throw new BadRequestException('File size too large. Maximum 10MB per file.');
+      }
+    }
+
     return this.productService.uploadProductImages(id, files);
   }
 

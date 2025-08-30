@@ -105,10 +105,23 @@ export class AuthService {
   }
 
   async findUserById(id: string): Promise<User> {
-    const user = await this.userRepository.findOne({ where: { id } });
+    const user = await this.userRepository.findOne({
+      where: { id },
+    });
     if (!user) {
       throw new BadRequestException('User not found');
     }
+
+    // Load products separately to ensure relations work
+    const products = await this.userRepository.manager.find('Product', {
+      where: { created_by_id: id, is_active: true },
+      relations: ['images'],
+      order: { created_at: 'DESC' } as any,
+    });
+
+    // Attach products to user
+    user.products = products as any;
+
     return user;
   }
 

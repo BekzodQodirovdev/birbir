@@ -62,28 +62,53 @@ export class ProductService {
     createProductDto: CreateProductDto,
     userId: string,
   ): Promise<Product> {
-    // Listing ID ni yaratish (8 xonali raqam)
-    const listingId = Math.floor(
-      10000000 + Math.random() * 90000000,
-    ).toString();
+    try {
+      // Validate userId
+      if (!userId) {
+        throw new BadRequestException('User ID is required');
+      }
 
-    // Generate slug from product name
-    const slug = this.generateSlug(createProductDto.name);
+      // Validate required fields
+      if (!createProductDto.name || createProductDto.name.trim() === '') {
+        throw new BadRequestException('Product name is required');
+      }
 
-    const product = this.repository.create({
-      ...createProductDto,
-      created_by_id: userId,
-      listing_id: listingId,
-      slug: slug,
-      tab: 'draft', // New products start in draft status
-      status: 500, // Default status
-    });
+      // Listing ID ni yaratish (8 xonali raqam)
+      const listingId = Math.floor(
+        10000000 + Math.random() * 90000000,
+      ).toString();
 
-    // Save the product first
-    const savedProduct = await this.repository.save(product);
+      // Generate slug from product name
+      const slug = this.generateSlug(createProductDto.name);
 
-    // Update publishable status
-    return await this.updateProductPublishableStatus(savedProduct);
+      // Clean up date fields - convert invalid strings to undefined for TypeORM
+      const cleanedDto = {
+        ...createProductDto,
+        should_expired_at:
+          this.parseDateOrNull(createProductDto.should_expired_at) || undefined,
+        first_published_at:
+          this.parseDateOrNull(createProductDto.first_published_at) ||
+          undefined,
+      };
+
+      const product = this.repository.create({
+        ...cleanedDto,
+        created_by_id: userId,
+        listing_id: listingId,
+        slug: slug,
+        tab: 'draft', // New products start in draft status
+        status: 500, // Default status
+      });
+
+      // Save the product first
+      const savedProduct = await this.repository.save(product);
+
+      // Update publishable status
+      return await this.updateProductPublishableStatus(savedProduct);
+    } catch (error) {
+      console.error('Error creating product:', error);
+      throw error;
+    }
   }
 
   /**
@@ -98,6 +123,19 @@ export class ProductService {
       .replace(/[^\w\s-]/g, '')
       .replace(/[\s_-]+/g, '-')
       .replace(/^-+|-+$/g, '');
+  }
+
+  /**
+   * Parse date string or return null if invalid
+   * @param dateString The date string to parse
+   * @returns Date object or null
+   */
+  private parseDateOrNull(dateString: string | null | undefined): Date | null {
+    if (!dateString || dateString === 'string' || dateString === '') {
+      return null;
+    }
+    const date = new Date(dateString);
+    return isNaN(date.getTime()) ? null : date;
   }
 
   // Image handling methods
@@ -229,17 +267,46 @@ export class ProductService {
   async findAll(
     paginationDto: PaginationDto,
   ): Promise<PaginationResult<Product>> {
-    const queryBuilder = this.repository
-      .createQueryBuilder('product')
-      .leftJoinAndSelect('product.created_by', 'user')
-      .leftJoinAndSelect('product.images', 'images')
-      .where('product.is_active = :isActive', { isActive: true })
-      .orderBy('product.is_promoted', 'DESC')
-      .addOrderBy('product.promotion_type', 'DESC')
-      .addOrderBy('product.created_at', 'DESC')
-      .addOrderBy('images.order_index', 'ASC');
+    const { page = 1, limit = 10 } = paginationDto;
+    const skip = (page - 1) * limit;
 
-    return await this.paginateQuery(queryBuilder, paginationDto);
+    // First get the products without relations
+    const [products, total] = await this.repository.findAndCount({
+      where: { is_active: true },
+      order: {
+        is_promoted: 'DESC',
+        promotion_type: 'DESC',
+        created_at: 'DESC',
+      },
+      skip,
+      take: limit,
+    });
+
+    // Load relations for each product
+    const productsWithRelations = await Promise.all(
+      products.map(async (product) => {
+        const productWithRelations = await this.repository.findOne({
+          where: { id: product.id },
+          relations: ['created_by', 'images'],
+          order: { images: { order_index: 'ASC' } },
+        });
+        return productWithRelations;
+      })
+    );
+
+    const totalPages = Math.ceil(total / limit);
+
+    return {
+      data: productsWithRelations.filter(Boolean) as Product[],
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNext: page < totalPages,
+        hasPrev: page > 1,
+      },
+    };
   }
 
   async findOne(id: string): Promise<Product> {
@@ -258,6 +325,13 @@ export class ProductService {
     await this.repository.save(product);
 
     return product;
+  }
+
+  async getProductImagesCount(productId: string): Promise<number> {
+    const count = await this.imageRepository.count({
+      where: { product_id: productId },
+    });
+    return count;
   }
 
   async update(
@@ -1026,29 +1100,35 @@ export class ProductService {
    * @returns Updated product
    */
   async updateProductPublishableStatus(product: Product): Promise<Product> {
-    // Load product images if not already loaded
-    if (!product.images) {
-      product.images = await this.imageRepository.find({
-        where: { product_id: product.id },
-        order: { order_index: 'ASC' },
-      });
+    try {
+      // Load product images if not already loaded
+      if (!product.images) {
+        product.images = await this.imageRepository.find({
+          where: { product_id: product.id },
+          order: { order_index: 'ASC' },
+        });
+      }
+
+      // Check if product is publishable
+      const issues = this.checkProductPublishable(product);
+      const isPublishable = issues.length === 0;
+
+      // Update product fields
+      product.publishable = isPublishable;
+      product.issues = JSON.stringify(issues);
+
+      // If product is publishable and in draft status, we can publish it
+      if (isPublishable && product.tab === 'draft') {
+        product.tab = 'published';
+        product.first_published_at = new Date();
+      }
+
+      return await this.repository.save(product);
+    } catch (error) {
+      console.error('Error updating product publishable status:', error);
+      // Return product as-is if there's an error with publishable status update
+      return product;
     }
-
-    // Check if product is publishable
-    const issues = this.checkProductPublishable(product);
-    const isPublishable = issues.length === 0;
-
-    // Update product fields
-    product.publishable = isPublishable;
-    product.issues = JSON.stringify(issues);
-
-    // If product is publishable and in draft status, we can publish it
-    if (isPublishable && product.tab === 'draft') {
-      product.tab = 'published';
-      product.first_published_at = new Date();
-    }
-
-    return await this.repository.save(product);
   }
 
   /**
