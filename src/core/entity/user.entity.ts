@@ -229,17 +229,13 @@ export class User extends BaseModel {
   @Column({ type: 'timestamp', nullable: true })
   password_reset_expires: Date;
 
-  /** Whether 2FA is enabled */
-  @Column({ type: 'boolean', default: false })
-  two_factor_enabled: boolean;
-
-  /** 2FA secret key */
-  @Column({ type: 'varchar', length: 255, nullable: true })
-  two_factor_secret: string;
-
   /** Refresh token for session management */
   @Column({ type: 'text', nullable: true })
   refresh_token: string;
+
+  /** Refresh token expiration time */
+  @Column({ type: 'timestamp', nullable: true })
+  refresh_token_expires: Date;
 
   /** Timestamp of last login */
   @Column({ type: 'timestamp', nullable: true })

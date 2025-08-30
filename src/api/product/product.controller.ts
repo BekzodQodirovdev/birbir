@@ -25,6 +25,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { CreatePromotionDto } from './dto/promotion.dto';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { Product } from 'src/core/entity/product.entity';
 import { RolesGuard } from 'src/common/guard/roles.guard';
 import { Roles } from 'src/common/decorator/roles.decorator';
 
@@ -44,8 +45,13 @@ export class ProductController {
 
   @Post()
   @ApiOperation({ summary: 'Create a new product' })
-  @ApiResponse({ status: 201, description: 'Product created successfully' })
+  @ApiResponse({
+    status: 201,
+    description: 'Product created successfully',
+    type: Product,
+  })
   @ApiResponse({ status: 400, description: 'Bad request' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
   create(
     @Body() createProductDto: CreateProductDto,
     @Request() req: RequestWithUser,
@@ -190,7 +196,11 @@ export class ProductController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Get a product by id' })
-  @ApiResponse({ status: 200, description: 'Product retrieved successfully' })
+  @ApiResponse({
+    status: 200,
+    description: 'Product retrieved successfully',
+    type: Product,
+  })
   @ApiResponse({ status: 404, description: 'Product not found' })
   findOne(@Param('id') id: string) {
     return this.productService.findOne(id);

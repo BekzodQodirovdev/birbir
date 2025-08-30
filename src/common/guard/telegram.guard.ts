@@ -22,10 +22,11 @@ export class TelegramAuthGuard implements CanActivate {
     }
 
     // Verify the authentication data
-    const isValid = this.telegramVerificationService.verifyTelegramAuthDataWithTimeCheck(
-      query,
-      86400, // 24 hours
-    );
+    const isValid =
+      this.telegramVerificationService.verifyTelegramAuthDataWithTimeCheck(
+        query,
+        86400, // 24 hours
+      );
 
     if (!isValid) {
       throw new UnauthorizedException('Invalid Telegram authentication data');

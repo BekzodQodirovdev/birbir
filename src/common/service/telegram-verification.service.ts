@@ -40,7 +40,10 @@ export class TelegramVerificationService {
    * @param maxAge Maximum age of the authentication data in seconds (default: 86400 = 24 hours)
    * @returns boolean indicating if the data is valid and not expired
    */
-  verifyTelegramAuthDataWithTimeCheck(data: any, maxAge: number = 86400): boolean {
+  verifyTelegramAuthDataWithTimeCheck(
+    data: any,
+    maxAge: number = 86400,
+  ): boolean {
     // Check if auth_date exists
     if (!data.auth_date) {
       return false;
@@ -49,7 +52,7 @@ export class TelegramVerificationService {
     // Check if the authentication data is not too old
     const authDate = parseInt(data.auth_date, 10);
     const currentDate = Math.floor(Date.now() / 1000);
-    
+
     if (currentDate - authDate > maxAge) {
       return false;
     }

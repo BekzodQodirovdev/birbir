@@ -4,7 +4,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, SelectQueryBuilder } from 'typeorm';
+import { SelectQueryBuilder } from 'typeorm';
 import { ProductRepository } from 'src/core/repository/product.repository';
 import { ProductImageRepository } from 'src/core/repository/product-image.repository';
 import { Product } from 'src/core/entity/product.entity';
@@ -1309,7 +1309,7 @@ export class ProductService {
       where: { created_by_id: userId },
     });
 
-    let allPromotionHistory: IPromotionHistoryRecordGet[] = [];
+    const allPromotionHistory: IPromotionHistoryRecordGet[] = [];
 
     for (const product of products) {
       // Add current promotion if active

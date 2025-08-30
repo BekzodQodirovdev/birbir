@@ -7,6 +7,7 @@ import {
   UseGuards,
   Res,
   Req,
+  UnauthorizedException,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -23,6 +24,19 @@ import { TelegramAuthGuard } from 'src/common/guard/telegram.guard';
 import { JwtService } from '@nestjs/jwt';
 import { TelegramAuthService } from './telegram-auth.service';
 
+// Extend Express Request to include user property
+declare module 'express' {
+  interface Request {
+    user?: {
+      id: string;
+      first_name: string;
+      username: string;
+      photo_url: string;
+      phone_number?: string;
+    };
+  }
+}
+
 @ApiTags('Authentication')
 @Controller('auth')
 export class AuthController {
@@ -33,8 +47,6 @@ export class AuthController {
   ) {}
 
   @Public()
-
-  // auth.controller.ts
   @Post('telegram/complete')
   async completeTelegramAuth(
     @Body()
@@ -65,7 +77,11 @@ export class AuthController {
   @Get('telegram')
   @UseGuards(TelegramAuthGuard)
   async telegramLogin(@Req() req: ERequest, @Res() res: Response) {
-    const user = req.user as any;
+    const user = req.user;
+
+    if (!user) {
+      throw new UnauthorizedException('User not found in request');
+    }
 
     // Generate JWT token for the user
     const token = await this.authService.generateJwtTelegram(user);
@@ -140,164 +156,15 @@ export class AuthController {
     return this.authService.findUserById(req.user.sub);
   }
 
-  // @Public()
-  // @Post('register')
-  // @ApiOperation({
-  //   summary: 'Register a new user',
-  //   description: 'Create a new user account with email and password',
-  // })
-  // @ApiResponse({
-  //   status: 201,
-  //   description: 'User registered successfully',
-  // })
-  // @ApiResponse({
-  //   status: 400,
-  //   description: 'Bad request - Invalid input or user already exists',
-  // })
-  // async register(@Body() registerDto: RegisterUserDto) {
-  //   return await this.authService.registerUser(registerDto);
-  // }
-
-  // @Public()
-  // @Post('login')
-  // @ApiOperation({
-  //   summary: 'Login user',
-  //   description: 'Authenticate user with email and password',
-  // })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: 'User logged in successfully',
-  // })
-  // @ApiResponse({
-  //   status: 401,
-  //   description: 'Unauthorized - Invalid credentials',
-  // })
-  // async login(@Body() loginDto: LoginUserDto) {
-  //   return await this.authService.loginUser(loginDto.email, loginDto.password);
-  // }
-
-  // @Post('logout')
-  // @UseGuards(JwtAuthGuard)
-  // @ApiBearerAuth()
-  // @ApiOperation({
-  //   summary: 'Logout user',
-  //   description: 'Logout the currently authenticated user',
-  // })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: 'User logged out successfully',
-  // })
-  // @ApiResponse({
-  //   status: 401,
-  //   description: 'Unauthorized - Invalid or missing token',
-  // })
-  // async logout(@Request() req: any) {
-  //   return await this.authService.logoutUser(req.user.sub);
-  // }
-
-  // @Public()
-  // @Post('forgot-password')
-  // @ApiOperation({
-  //   summary: 'Forgot password',
-  //   description: 'Send password reset email to user',
-  // })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: 'Password reset email sent successfully',
-  // })
-  // async forgotPassword(@Body() forgotPasswordDto: ForgotPasswordDto) {
-  //   await this.authService.forgotPassword(forgotPasswordDto.email);
-  //   return { message: 'Password reset email sent successfully' };
-  // }
-
-  // @Public()
-  // @Post('reset-password')
-  // @ApiOperation({
-  //   summary: 'Reset password',
-  //   description: 'Reset user password with token',
-  // })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: 'Password reset successfully',
-  // })
-  // @ApiResponse({
-  //   status: 400,
-  //   description: 'Bad request - Invalid or expired token',
-  // })
-  // async resetPassword(@Body() resetPasswordDto: ResetPasswordDto) {
-  //   await this.authService.resetPassword(
-  //     resetPasswordDto.token,
-  //     resetPasswordDto.newPassword,
-  //   );
-  //   return { message: 'Password reset successfully' };
-  // }
-
-  // @Post('enable-2fa')
-  // @UseGuards(JwtAuthGuard)
-  // @ApiBearerAuth()
-  // @ApiOperation({
-  //   summary: 'Enable two-factor authentication',
-  //   description: 'Enable 2FA for the currently authenticated user',
-  // })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: 'Two-factor authentication enabled successfully',
-  // })
-  // @ApiResponse({
-  //   status: 401,
-  //   description: 'Unauthorized - Invalid or missing token',
-  // })
-  // async enable2fa(@Request() req: any) {
-  //   return await this.authService.enableTwoFactor(req.user.sub);
-  // }
-
-  // @Post('disable-2fa')
-  // @UseGuards(JwtAuthGuard)
-  // @ApiBearerAuth()
-  // @ApiOperation({
-  //   summary: 'Disable two-factor authentication',
-  //   description: 'Disable 2FA for the currently authenticated user',
-  // })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: 'Two-factor authentication disabled successfully',
-  // })
-  // @ApiResponse({
-  //   status: 401,
-  //   description: 'Unauthorized - Invalid or missing token',
-  // })
-  // async disable2fa(@Request() req: any) {
-  //   await this.authService.disableTwoFactor(req.user.sub);
-  //   return { message: 'Two-factor authentication disabled successfully' };
-  // }
-
-  // @Post('verify-2fa')
-  // @UseGuards(JwtAuthGuard)
-  // @ApiBearerAuth()
-  // @ApiOperation({
-  //   summary: 'Verify two-factor authentication',
-  //   description: 'Verify 2FA token for the currently authenticated user',
-  // })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: 'Two-factor authentication verified successfully',
-  // })
-  // @ApiResponse({
-  //   status: 401,
-  //   description: 'Unauthorized - Invalid or missing token',
-  // })
-  // @ApiResponse({
-  //   status: 400,
-  //   description: 'Bad request - Invalid 2FA token',
-  // })
-  // async verify2fa(@Request() req: any, @Body() twoFactorDto: TwoFactorDto) {
-  //   const isValid = await this.authService.verifyTwoFactor(
-  //     req.user.sub,
-  //     twoFactorDto.token,
-  //   );
-  //   if (!isValid) {
-  //     throw new BadRequestException('Invalid 2FA token');
-  //   }
-  //   return { message: 'Two-factor authentication verified successfully' };
-  // }
+  @Public()
+  @Post('refresh')
+  @ApiOperation({ summary: 'Refresh access token' })
+  @ApiResponse({
+    status: 200,
+    description: 'Tokens refreshed successfully',
+  })
+  @ApiResponse({ status: 401, description: 'Invalid refresh token' })
+  async refreshToken(@Body() body: { refresh_token: string }) {
+    return this.authService.refreshToken(body.refresh_token);
+  }
 }

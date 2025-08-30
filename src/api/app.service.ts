@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser';
+import helmet from 'helmet';
 import { AllExceptionsFilter } from '../infrastructure/lib/index';
 import { IoAdapter } from '@nestjs/platform-socket.io';
 
@@ -12,6 +13,27 @@ export class Application {
     app.useWebSocketAdapter(new IoAdapter(app));
     app.setGlobalPrefix('api');
     app.use(cookieParser());
+
+    // Security headers with Helmet
+    app.use(helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          styleSrc: ["'self'", "'unsafe-inline'"],
+          scriptSrc: ["'self'"],
+          imgSrc: ["'self'", "data:", "https:"],
+        },
+      },
+      hsts: {
+        maxAge: 31536000,
+        includeSubDomains: true,
+        preload: true,
+      },
+      noSniff: true,
+      xssFilter: true,
+      xFrameOptions: { action: 'deny' },
+    }));
+
     app.useGlobalFilters(new AllExceptionsFilter());
     app.useGlobalPipes(
       new ValidationPipe({

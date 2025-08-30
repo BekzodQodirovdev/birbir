@@ -11,7 +11,6 @@ import { CreateAuthDto } from './dto/create-auth.dto';
 import { v4 as uuidv4 } from 'uuid';
 import { config } from 'src/config';
 import { BcryptManage } from 'src/infrastructure/lib/bcrypt';
-import { randomBytes } from 'crypto';
 import { TelegramSession } from './telegram-session.entity';
 
 @Injectable()
@@ -73,9 +72,20 @@ export class AuthService {
         await this.userRepository.save(user);
       }
 
+      // Generate refresh token
+      const refreshToken = this.generateRefreshToken();
+      const refreshTokenExpires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
+
+      // Update user with refresh token
+      user.refresh_token = refreshToken;
+      user.refresh_token_expires = refreshTokenExpires;
+      await this.userRepository.save(user);
+
       return {
         ...user,
         access_token: this.generateJwt(user),
+        refresh_token: refreshToken,
+        expires_in: config.ACCESS_TOKEN_TIME,
       };
     } catch (error) {
       throw new BadRequestException(
@@ -258,13 +268,58 @@ export class AuthService {
   }
 
   async refreshToken(refreshToken: string): Promise<any> {
-    // In a real implementation, you would verify the refresh token
-    // and generate a new access token
+    try {
+      // Find user by refresh token
+      const user = await this.userRepository.findOne({
+        where: { refresh_token: refreshToken },
+      });
 
-    // For now, we'll just return a placeholder
-    return {
-      access_token: 'new-access-token',
-    };
+      if (!user) {
+        throw new UnauthorizedException('Invalid refresh token');
+      }
+
+      // Check if refresh token is expired
+      if (
+        user.refresh_token_expires &&
+        user.refresh_token_expires < new Date()
+      ) {
+        // Clear expired refresh token
+        user.refresh_token = null as any;
+        user.refresh_token_expires = null as any;
+        await this.userRepository.save(user);
+        throw new UnauthorizedException('Refresh token expired');
+      }
+
+      // Generate new access token
+      const access_token = this.generateJwt(user);
+
+      // Generate new refresh token for security (token rotation)
+      const newRefreshToken = this.generateRefreshToken();
+      const refreshTokenExpires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
+
+      // Update user with new refresh token
+      user.refresh_token = newRefreshToken;
+      user.refresh_token_expires = refreshTokenExpires;
+      await this.userRepository.save(user);
+
+      return {
+        access_token,
+        refresh_token: newRefreshToken,
+        expires_in: config.ACCESS_TOKEN_TIME,
+      };
+    } catch (error) {
+      throw new UnauthorizedException('Token refresh failed');
+    }
+  }
+
+  private generateRefreshToken(): string {
+    return this.jwtService.sign(
+      { type: 'refresh' },
+      {
+        secret: config.REFRESH_TOKEN_KEY,
+        expiresIn: config.REFRESH_TOKEN_TIME,
+      },
+    );
   }
 
   async forgotPassword(email: string): Promise<void> {
@@ -315,27 +370,6 @@ export class AuthService {
     await this.userRepository.save(user);
   }
 
-  async enableTwoFactor(userId: string): Promise<any> {
-    const user = await this.findUserById(userId);
-
-    // In a real implementation, you would generate a 2FA secret and QR code
-    // For now, we'll just set two_factor_enabled to true
-    user.two_factor_enabled = true;
-    // user.two_factor_secret = generate2FASecret(); // Generate actual secret
-    await this.userRepository.save(user);
-
-    // Return data needed for QR code generation
-    return {
-      // qrCodeUrl: generateQRCodeUrl(user.email, user.two_factor_secret),
-    };
-  }
-
-  async disableTwoFactor(userId: string): Promise<void> {
-    const user = await this.findUserById(userId);
-    user.two_factor_enabled = false;
-    user.two_factor_secret = ''; // Fix: assign empty string instead of null
-    await this.userRepository.save(user);
-  }
 
   // async verifyTwoFactor(userId: string, token: string): Promise<boolean> {
   //   const user = await this.findUserById(userId);
@@ -360,9 +394,8 @@ export class AuthService {
   //   // In a real implementation, you would invalidate the specific session
   //   // For now, this is a placeholder
   // }
-
-  // async logoutFromAllSessions(userId: string): Promise<void> {
-  //   // In a real implementation, you would invalidate all sessions for the user
-  //   // For now, this is a placeholder
-  // }
+//   async logoutFromAllSessions(userId: string): Promise<void> {
+//     // In a real implementation, you would invalidate all sessions for the user
+//     // For now, this is a placeholder
+//   }
 }

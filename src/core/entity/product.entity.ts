@@ -142,10 +142,6 @@ export class Product extends BaseModel {
   @Column({ type: 'text', nullable: true })
   issues: string; // Validation issues as JSON
 
-  // Additional metadata
-  @Column({ type: 'varchar', length: 36, nullable: true })
-  uuid: string; // Unique identifier
-
   @Column({ type: 'varchar', length: 255, nullable: true })
   web_uri: string; // Web URI for the product
 

@@ -27,7 +27,10 @@ export class RegionService {
     return await this.regionRepository.save(region);
   }
 
-  async update(id: number, regionData: Partial<Region>): Promise<Region | null> {
+  async update(
+    id: number,
+    regionData: Partial<Region>,
+  ): Promise<Region | null> {
     await this.regionRepository.update({ regionId: id }, regionData);
     return await this.regionRepository.findOne({ where: { regionId: id } });
   }

@@ -9,7 +9,6 @@ import {
   IsLatitude,
   IsLongitude,
   IsInt,
-  IsUUID,
 } from 'class-validator';
 
 export class CreateProductDto {
@@ -31,11 +30,6 @@ export class CreateProductDto {
   @IsNumber()
   @Min(0)
   stock: number;
-
-  @ApiProperty({ description: 'Product image URL', required: false })
-  @IsOptional()
-  @IsString()
-  image_url?: string;
 
   @ApiProperty({
     description: 'Product condition',
@@ -132,12 +126,6 @@ export class CreateProductDto {
   @IsOptional()
   @IsString()
   issues?: string;
-
-  // Additional metadata
-  @ApiProperty({ description: 'Product UUID', required: false })
-  @IsOptional()
-  @IsUUID()
-  uuid?: string;
 
   @ApiProperty({ description: 'Product web URI', required: false })
   @IsOptional()

@@ -375,11 +375,11 @@ export class UserService {
     description: string,
   ): Promise<any> {
     const user = await this.findOne(userId);
-    
+
     // Increment the user's report count
     user.total_reports = (user.total_reports || 0) + 1;
     await this.repository.save(user);
-    
+
     // In a real implementation, you would save the report to a separate table
     // For now, we'll just return a success message
     return { message: 'User reported successfully' };
@@ -410,33 +410,33 @@ export class UserService {
     duration?: number,
   ): Promise<User> {
     const user = await this.findOne(userId);
-    
+
     // Set user status to suspended
     user.status = 'suspended';
-    
+
     // Set ban expiration if duration is provided
     if (duration) {
       const banExpiresAt = new Date();
       banExpiresAt.setDate(banExpiresAt.getDate() + duration);
       // In a real implementation, you would save this to a bans table
     }
-    
+
     // Save the reason for banning
     user.application_rejection_reason = reason;
-    
+
     return await this.repository.save(user);
   }
 
   // Unban a user (moderator)
   async unbanUser(userId: string, moderatorId: string): Promise<User> {
     const user = await this.findOne(userId);
-    
+
     // Set user status back to active
     user.status = 'active';
-    
+
     // Clear the ban reason
     user.application_rejection_reason = '';
-    
+
     return await this.repository.save(user);
   }
 
