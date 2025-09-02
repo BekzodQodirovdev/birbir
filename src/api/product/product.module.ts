@@ -13,4 +13,3 @@ import { FileUploadService } from 'src/common/service/file-upload.service';
   exports: [ProductService],
 })
 export class ProductModule {}
- 

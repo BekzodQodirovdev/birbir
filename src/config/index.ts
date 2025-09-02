@@ -13,7 +13,6 @@ export type ConfigType = {
   ACCESS_TOKEN_TIME: string;
   REFRESH_TOKEN_KEY: string;
   REFRESH_TOKEN_TIME: string;
-  JWT_SECRET: string;
   TELEGRAM_BOT_TOKEN: string;
   TELEGRAM_BOT_NAME: string;
   FRONTEND_SOCIAL_LOGIN_URL: string;
@@ -31,7 +30,6 @@ export const config: ConfigType = {
   ACCESS_TOKEN_TIME: process.env.ACCESS_TOKEN_TIME as string,
   REFRESH_TOKEN_KEY: process.env.REFRESH_TOKEN_KEY as string,
   REFRESH_TOKEN_TIME: process.env.REFRESH_TOKEN_TIME as string,
-  JWT_SECRET: process.env.JWT_SECRET as string,
   TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN as string,
   TELEGRAM_BOT_NAME: process.env.TELEGRAM_BOT_NAME as string,
   FRONTEND_SOCIAL_LOGIN_URL: process.env.FRONTEND_SOCIAL_LOGIN_URL as string,

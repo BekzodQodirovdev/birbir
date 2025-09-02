@@ -13,7 +13,8 @@ import { Region } from '../../core/entity/region.entity';
 import { JwtAuthGuard } from 'src/common/guard/jwt-auth.guard';
 import { RolesGuard } from 'src/common/guard/roles.guard';
 import { Roles } from 'src/common/decorator/roles.decorator';
-
+import { ApiBearerAuth } from '@nestjs/swagger';
+@ApiBearerAuth()
 @Controller('regions')
 export class RegionController {
   constructor(private readonly regionService: RegionService) {}

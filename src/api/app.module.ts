@@ -9,6 +9,7 @@ import { ProductModule } from './product/product.module';
 import { RegionModule } from './region/region.module';
 import { JwtAuthGuard } from 'src/common/guard/jwt-auth.guard';
 import { TelegramAuthModule } from './auth/telegram-auth.module';
+import { CommandModule } from 'nestjs-command';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { TelegramAuthModule } from './auth/telegram-auth.module';
       synchronize: true, // true for development
       entities: ['dist/core/entity/*.entity{.ts,.js}'],
     }),
+    CommandModule,
     AuthModule,
     TelegramAuthModule,
     UserModule,

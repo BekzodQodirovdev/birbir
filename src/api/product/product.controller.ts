@@ -11,6 +11,7 @@ import {
   Query,
   UseInterceptors,
   UploadedFiles,
+  BadRequestException,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -25,6 +26,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { CreatePromotionDto } from './dto/promotion.dto';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { Product } from 'src/core/entity/product.entity';
 import { RolesGuard } from 'src/common/guard/roles.guard';
 import { Roles } from 'src/common/decorator/roles.decorator';
 
@@ -44,13 +46,28 @@ export class ProductController {
 
   @Post()
   @ApiOperation({ summary: 'Create a new product' })
-  @ApiResponse({ status: 201, description: 'Product created successfully' })
+  @ApiResponse({
+    status: 201,
+    description: 'Product created successfully',
+    type: Product,
+  })
   @ApiResponse({ status: 400, description: 'Bad request' })
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
   create(
     @Body() createProductDto: CreateProductDto,
     @Request() req: RequestWithUser,
   ) {
-    return this.productService.create(createProductDto, req.user.sub);
+    try {
+      // Validate user authentication
+      if (!req.user || !req.user.sub) {
+        throw new BadRequestException('User not authenticated');
+      }
+
+      return this.productService.create(createProductDto, req.user.sub);
+    } catch (error) {
+      console.error('Error in product creation:', error);
+      throw error;
+    }
   }
 
   @Get()
@@ -190,7 +207,11 @@ export class ProductController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Get a product by id' })
-  @ApiResponse({ status: 200, description: 'Product retrieved successfully' })
+  @ApiResponse({
+    status: 200,
+    description: 'Product retrieved successfully',
+    type: Product,
+  })
   @ApiResponse({ status: 404, description: 'Product not found' })
   findOne(@Param('id') id: string) {
     return this.productService.findOne(id);
@@ -269,10 +290,38 @@ export class ProductController {
   @ApiResponse({ status: 404, description: 'Product not found' })
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FilesInterceptor('images', 6))
-  uploadImages(
+  async uploadImages(
     @Param('id') id: string,
     @UploadedFiles() files: Express.Multer.File[],
   ) {
+    // Additional validation in controller
+    if (!files || files.length === 0) {
+      throw new BadRequestException('No files uploaded');
+    }
+
+    // Check existing images count
+    const existingImages = await this.productService.getProductImagesCount(id);
+    const totalImages = existingImages + files.length;
+
+    if (totalImages > 6) {
+      throw new BadRequestException(
+        `Cannot upload ${files.length} images. Product already has ${existingImages} images. Maximum 6 images allowed per product.`
+      );
+    }
+
+    // Validate file types
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    for (const file of files) {
+      if (!allowedTypes.includes(file.mimetype)) {
+        throw new BadRequestException(`Invalid file type: ${file.mimetype}. Only JPEG, PNG, and WebP are allowed.`);
+      }
+
+      // Check file size (10MB limit)
+      if (file.size > 10 * 1024 * 1024) {
+        throw new BadRequestException('File size too large. Maximum 10MB per file.');
+      }
+    }
+
     return this.productService.uploadProductImages(id, files);
   }
 

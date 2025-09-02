@@ -7,6 +7,7 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import { Reflector } from '@nestjs/core';
 import { IS_PUBLIC_KEY } from '../decorator/public.decorator';
+import { config } from 'src/config';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
@@ -35,15 +36,22 @@ export class JwtAuthGuard implements CanActivate {
     const [bearer, token] = authHeader.split(' ');
 
     if (bearer !== 'Bearer' || !token) {
-      throw new UnauthorizedException('Unauthorized');
+      throw new UnauthorizedException('Invalid authorization header');
     }
 
     try {
-      const payload = this.jwtService.verify(token);
+      const payload = this.jwtService.verify(token, {
+        secret: config.ACCESS_TOKEN_KEY, // secretni aniq ko‘rsat
+      });
       request.user = payload;
       return true;
-    } catch {
-      throw new UnauthorizedException('Token expired');
+    } catch (error) {
+      if (error.name === 'TokenExpiredError') {
+        throw new UnauthorizedException('Token expired');
+      } else if (error.name === 'JsonWebTokenError') {
+        throw new UnauthorizedException('Invalid token');
+      }
+      throw new UnauthorizedException('Unauthorized');
     }
   }
 }

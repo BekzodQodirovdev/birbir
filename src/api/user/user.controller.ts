@@ -147,8 +147,8 @@ export class UserController {
     );
   }
 
+  // @Roles('admin')
   @Get(':id')
-  @Roles('admin')
   @ApiOperation({ summary: 'Get a user by id' })
   @ApiResponse({ status: 200, description: 'User retrieved successfully' })
   @ApiResponse({ status: 404, description: 'User not found' })
