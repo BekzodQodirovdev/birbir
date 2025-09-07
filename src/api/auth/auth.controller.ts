@@ -94,7 +94,7 @@ export class AuthController {
   @Public()
   @Post('telegram')
   @UseGuards(TelegramAuthGuard)
-  async telegramLoginPost(@Req() req: ERequest, @Res() res: Response) {
+  async telegramLoginPost(@Req() req: { user: any }, @Res() res: Response) {
     const user = req.user as {
       id: string;
       first_name: string;
