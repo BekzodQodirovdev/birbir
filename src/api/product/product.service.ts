@@ -68,6 +68,15 @@ export class ProductService {
         throw new BadRequestException('User ID is required');
       }
 
+      // Validate that user exists
+      const userExists = await this.repository.manager.findOne('User', {
+        where: { id: userId },
+      });
+
+      if (!userExists) {
+        throw new BadRequestException('User not found');
+      }
+
       // Validate required fields
       if (!createProductDto.name || createProductDto.name.trim() === '') {
         throw new BadRequestException('Product name is required');
@@ -104,7 +113,20 @@ export class ProductService {
       const savedProduct = await this.repository.save(product);
 
       // Update publishable status
-      return await this.updateProductPublishableStatus(savedProduct);
+      const updatedProduct = await this.updateProductPublishableStatus(savedProduct);
+
+      // Load relations and return the complete product
+      const finalProduct = await this.repository.findOne({
+        where: { id: updatedProduct.id },
+        relations: ['created_by', 'images', 'region'],
+        order: { images: { order_index: 'ASC' } },
+      });
+
+      if (!finalProduct) {
+        throw new BadRequestException('Failed to load product with relations');
+      }
+
+      return finalProduct;
     } catch (error) {
       console.error('Error creating product:', error);
       throw error;
@@ -267,52 +289,24 @@ export class ProductService {
   async findAll(
     paginationDto: PaginationDto,
   ): Promise<PaginationResult<Product>> {
-    const { page = 1, limit = 10 } = paginationDto;
-    const skip = (page - 1) * limit;
+    const queryBuilder = this.repository
+      .createQueryBuilder('product')
+      .leftJoinAndSelect('product.created_by', 'user')
+      .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
+      .where('product.is_active = :isActive', { isActive: true })
+      .orderBy('product.is_promoted', 'DESC')
+      .addOrderBy('product.promotion_type', 'DESC')
+      .addOrderBy('product.created_at', 'DESC')
+      .addOrderBy('images.order_index', 'ASC');
 
-    // First get the products without relations
-    const [products, total] = await this.repository.findAndCount({
-      where: { is_active: true },
-      order: {
-        is_promoted: 'DESC',
-        promotion_type: 'DESC',
-        created_at: 'DESC',
-      },
-      skip,
-      take: limit,
-    });
-
-    // Load relations for each product
-    const productsWithRelations = await Promise.all(
-      products.map(async (product) => {
-        const productWithRelations = await this.repository.findOne({
-          where: { id: product.id },
-          relations: ['created_by', 'images'],
-          order: { images: { order_index: 'ASC' } },
-        });
-        return productWithRelations;
-      })
-    );
-
-    const totalPages = Math.ceil(total / limit);
-
-    return {
-      data: productsWithRelations.filter(Boolean) as Product[],
-      pagination: {
-        page,
-        limit,
-        total,
-        totalPages,
-        hasNext: page < totalPages,
-        hasPrev: page > 1,
-      },
-    };
+    return await this.paginateQuery(queryBuilder, paginationDto);
   }
 
   async findOne(id: string): Promise<Product> {
     const product = await this.repository.findOne({
       where: { id, is_active: true },
-      relations: ['created_by', 'images'],
+      relations: ['created_by', 'images', 'region'],
       order: { images: { order_index: 'ASC' } },
     });
 
@@ -376,6 +370,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.created_by_id = :userId', { userId })
       .andWhere('product.is_active = :isActive', { isActive: true })
       .orderBy('product.is_promoted', 'DESC')
@@ -395,6 +390,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.is_active = :isActive', { isActive: true })
       .andWhere(
         '(product.name ILIKE :query OR product.description ILIKE :query)',
@@ -417,6 +413,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.category = :category', { category })
       .andWhere('product.is_active = :isActive', { isActive: true })
       .orderBy('product.is_promoted', 'DESC') // Reklama qilinganlar birinchi
@@ -436,6 +433,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.condition = :condition', { condition })
       .andWhere('product.is_active = :isActive', { isActive: true })
       .orderBy('product.is_promoted', 'DESC') // Reklama qilinganlar birinchi
@@ -456,6 +454,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.is_active = :isActive', { isActive: true })
       .andWhere('product.price >= :minPrice', { minPrice })
       .andWhere('product.price <= :maxPrice', { maxPrice })
@@ -475,6 +474,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.is_free = :isFree', { isFree: true })
       .andWhere('product.is_active = :isActive', { isActive: true })
       .orderBy('product.is_promoted', 'DESC') // Reklama qilinganlar birinchi
@@ -493,6 +493,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.is_urgent = :isUrgent', { isUrgent: true })
       .andWhere('product.is_active = :isActive', { isActive: true })
       .orderBy('product.is_promoted', 'DESC') // Reklama qilinganlar birinchi
@@ -511,6 +512,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.has_delivery = :hasDelivery', { hasDelivery: true })
       .andWhere('product.is_active = :isActive', { isActive: true })
       .orderBy('product.is_promoted', 'DESC') // Reklama qilinganlar birinchi
@@ -913,6 +915,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.is_promoted = :isPromoted', { isPromoted: true })
       .andWhere('product.is_active = :isActive', { isActive: true })
       .orderBy('product.promotion_start_date', 'DESC')
@@ -1004,6 +1007,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.id != :productId', { productId })
       .andWhere('product.is_active = :isActive', { isActive: true })
       .andWhere(
@@ -1034,6 +1038,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.created_by_id = :sellerId', { sellerId })
       .andWhere('product.id != :excludeProductId', {
         excludeProductId: productId,
@@ -1101,12 +1106,25 @@ export class ProductService {
    */
   async updateProductPublishableStatus(product: Product): Promise<Product> {
     try {
-      // Load product images if not already loaded
-      if (!product.images) {
-        product.images = await this.imageRepository.find({
-          where: { product_id: product.id },
-          order: { order_index: 'ASC' },
+      // Load product images and created_by relation if not already loaded
+      if (!product.images || !product.created_by) {
+        const fullProduct = await this.repository.findOne({
+          where: { id: product.id },
+          relations: ['images', 'created_by', 'region'],
+          order: { images: { order_index: 'ASC' } },
         });
+
+        if (fullProduct) {
+          product = fullProduct;
+        } else {
+          // Fallback: load images only if product not found
+          if (!product.images) {
+            product.images = await this.imageRepository.find({
+              where: { product_id: product.id },
+              order: { order_index: 'ASC' },
+            });
+          }
+        }
       }
 
       // Check if product is publishable
@@ -1204,6 +1222,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.tab = :tab', { tab })
       .andWhere('product.is_active = :isActive', { isActive: true })
       .orderBy('product.created_at', 'DESC')
@@ -1226,6 +1245,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.created_by_id = :userId', { userId })
       .andWhere('product.tab = :tab', { tab: 'draft' })
       .andWhere('product.is_active = :isActive', { isActive: true })
@@ -1341,6 +1361,7 @@ export class ProductService {
       .createQueryBuilder('product')
       .leftJoinAndSelect('product.created_by', 'user')
       .leftJoinAndSelect('product.images', 'images')
+      .leftJoinAndSelect('product.region', 'region')
       .where('product.tab = :tab', { tab: 'pending_review' })
       .andWhere('product.is_active = :isActive', { isActive: true })
       .orderBy('product.submitted_for_review_at', 'ASC')

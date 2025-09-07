@@ -1,6 +1,7 @@
 import { BaseModel } from 'src/common/database';
 import { Column, Entity, Index, OneToMany, ManyToOne } from 'typeorm';
 import { User } from './user.entity';
+import { Product } from './product.entity';
 
 export class Location {
   @Column({ type: 'varchar', length: 20 })
@@ -51,6 +52,9 @@ export class Region extends BaseModel {
   // Relationships
   @OneToMany(() => User, (user) => user.region)
   users: User[];
+
+  @OneToMany(() => Product, (product) => product.region)
+  products: Product[];
 
   // For tree structure
   @OneToMany(() => Region, (region) => region.parent)

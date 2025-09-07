@@ -187,4 +187,9 @@ export class CreateProductDto {
   @IsOptional()
   @IsString()
   badges?: string;
+
+  @ApiProperty({ description: 'Region ID', required: false })
+  @IsOptional()
+  @IsString()
+  region_id?: string;
 }

@@ -2,6 +2,7 @@ import { BaseModel } from 'src/common/database';
 import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 import { User } from './user.entity';
 import { ProductImage } from './product-image.entity';
+import { Region } from './region.entity';
 
 @Entity()
 export class Product extends BaseModel {
@@ -224,6 +225,12 @@ export class Product extends BaseModel {
 
   @Column()
   created_by_id: string;
+
+  @ManyToOne(() => Region, (region) => region.products, { nullable: true })
+  region: Region;
+
+  @Column({ nullable: true })
+  region_id: string;
 
   @OneToMany(() => ProductImage, (image) => image.product, { cascade: true })
   images: ProductImage[] | null;

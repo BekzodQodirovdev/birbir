@@ -25,7 +25,7 @@ import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { CreatePromotionDto } from './dto/promotion.dto';
-import { PaginationDto } from 'src/common/dto/pagination.dto';
+import { PaginationDto, SearchDto } from 'src/common/dto/pagination.dto';
 import { Product } from 'src/core/entity/product.entity';
 import { RolesGuard } from 'src/common/guard/roles.guard';
 import { Roles } from 'src/common/decorator/roles.decorator';
@@ -83,8 +83,9 @@ export class ProductController {
     status: 200,
     description: 'Search results retrieved successfully',
   })
-  search(@Query('q') query: string, @Query() paginationDto: PaginationDto) {
-    return this.productService.search(query, paginationDto);
+  search(@Query() searchDto: SearchDto) {
+    const { q, ...paginationDto } = searchDto;
+    return this.productService.search(q || '', paginationDto);
   }
 
   @Get('category/:category')
